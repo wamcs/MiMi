@@ -1,0 +1,17 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!-- Default toolbar dimens-->
+    <dimen name="default_toolbar_imageview_padding">40px</dimen>
+    <dimen name="default_toolbar_imageview_padding_left">26px</dimen>
+    <dimen name="default_toolbar_textview_margin_left">39px</dimen>
+    <dimen name="default_toolbar_textview_padding">13px</dimen>
+    <dimen name="default_toolbar_textview_text_size">18sp</dimen>
+    <dimen name="default_toolbar_textview_menu_text_size">18sp</dimen>
+
+    <!--Default toolbar height-->
+    <dimen name="default_toolbar_height">147px</dimen>
+</resources>
