@@ -2,5 +2,8 @@
     <string name="app_name">Community</string>
 
     <string name="no_network">当前没有网络</string>
+    <string name="ensure">确定</string>
+    <string name="dismiss">取消</string>
+    <string name="exit">再按一次退出</string>
 
 </resources>

@@ -4,5 +4,11 @@
     <item name="default_tool_bar_imageview" type="id"/>
     <item name="default_tool_bar_textview" type="id"/>
 
+    <!--mainActivity ids-->
+    <item name="page_1" type="id"/>
+    <item name="page_2" type="id"/>
+    <item name="page_3" type="id"/>
+    <item name="bottom_tab_layout" type="id"/>
+
 
 </resources>

@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="shadow_height">10dp</dimen>
+
 
     <!-- Default toolbar dimens-->
     <dimen name="default_toolbar_imageview_padding">40px</dimen>
@@ -14,4 +16,7 @@
 
     <!--Default toolbar height-->
     <dimen name="default_toolbar_height">147px</dimen>
+
+    <!--MainActivity dimens-->
+    <dimen name="main_activity_tab_layout_height">65dp</dimen>
 </resources>
