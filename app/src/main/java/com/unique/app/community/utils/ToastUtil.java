@@ -1,6 +1,7 @@
 package com.unique.app.community.utils;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.unique.app.community.global.AppData;

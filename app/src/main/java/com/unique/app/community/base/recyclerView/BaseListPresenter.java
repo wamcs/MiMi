@@ -59,7 +59,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
                     onError(throwable);
                     changeRefreshState(false);
                 });
-        addSubscrebe(subscription);
+        addSubscribe(subscription);
 
     }
 
@@ -84,7 +84,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
                     onError(throwable);
                     changeRefreshState(false);
                 });
-        addSubscrebe(subscription);
+        addSubscribe(subscription);
 
 
     }

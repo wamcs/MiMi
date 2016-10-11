@@ -15,6 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".loginAndRegister.login.LoginActivity"/>
+        <activity android:name=".loginAndRegister.register.RegisterActivity"/>
+        <activity android:name=".loginAndRegister.register.RegisterTwoActivity"/>
+        <activity android:name=".loginAndRegister.forgetPassword.ForgetPasswordActivity"/>
+
     </application>
 
 </manifest>

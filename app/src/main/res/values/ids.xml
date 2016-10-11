@@ -4,5 +4,16 @@
     <item name="default_tool_bar_imageview" type="id"/>
     <item name="default_tool_bar_textview" type="id"/>
 
+    <!--login, register and iForget activity-->
+    <item name="edit_text_login_mobile_phone_number" type="id"/>
+    <item name="edit_text_login_password" type="id"/>
+    <item name="button_login_login" type="id"/>
+    <item name="text_view_forget_password" type="id"/>
+    <item name="image_view_eye" type="id"/>
+    <item name="edit_text_login_verification_code" type="id"/>
+    <item name="text_view_login_verification_code" type="id"/>
+    <item name="tool_bar_login_back_button" type="id"/>
+    <item name="tool_bar_login_title" type="id"/>
+
 
 </resources>

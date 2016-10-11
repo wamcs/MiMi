@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@id/tool_bar_login_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:paddingTop="@dimen/default_toolbar_imageview_padding"
+        android:paddingBottom="@dimen/default_toolbar_imageview_padding"
+        android:paddingRight="@dimen/default_toolbar_imageview_padding"
+        android:paddingLeft="@dimen/default_toolbar_imageview_padding_left"
+        android:textSize="@dimen/default_toolbar_textview_text_size"
+        android:text="@string/back"
+        android:textColor="@color/black_text_login"
+        android:drawableStart="@drawable/ic_chevron_left_tool_bar"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@id/tool_bar_login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black_text_login"
+        android:padding="@dimen/default_toolbar_textview_padding"
+        android:textSize="@dimen/default_toolbar_textview_text_size"/>
+
+</RelativeLayout>
