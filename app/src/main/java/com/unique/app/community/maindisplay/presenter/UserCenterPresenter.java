@@ -1,4 +1,4 @@
-package com.unique.app.community.presenter;
+package com.unique.app.community.maindisplay.presenter;
 
 /**
  * Author: Wamcs

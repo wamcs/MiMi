@@ -1,4 +1,4 @@
-package com.unique.app.community.ui.fragment;
+package com.unique.app.community.maindisplay.ui.fragment;
 
 /**
  * Author: Wamcs

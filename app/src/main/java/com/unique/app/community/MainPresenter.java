@@ -1,4 +1,4 @@
-package com.unique.app.community.presenter;
+package com.unique.app.community;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;

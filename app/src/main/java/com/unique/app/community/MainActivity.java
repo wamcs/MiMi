@@ -1,13 +1,10 @@
-package com.unique.app.community.ui;
+package com.unique.app.community;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
-import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.global.App;
-import com.unique.app.community.presenter.MainPresenter;
 import com.unique.app.community.utils.ToastUtil;
 
 import butterknife.BindView;
