@@ -11,5 +11,8 @@ package com.unique.app.community.global;
  */
 public class conf {
 
+    public static final int VERIFICATION_START_COUNT = 1;
+    public static final int VERIFICATION_STOP_COUNT = 0;
+    public static final int VERIFICATION_END_COUNT = -1;
 
 }

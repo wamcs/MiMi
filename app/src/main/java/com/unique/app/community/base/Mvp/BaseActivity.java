@@ -2,10 +2,12 @@ package com.unique.app.community.base.Mvp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.unique.app.community.R;
 
@@ -68,7 +70,6 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
             actionBar.setHomeAsUpIndicator(null);
         }
     }
-
 
     protected abstract T getPresenter();
     protected abstract int getLayout();
