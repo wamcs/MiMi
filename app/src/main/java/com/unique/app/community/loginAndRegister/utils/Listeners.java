@@ -22,7 +22,7 @@ public class Listeners {
         return new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(view.getId() == R.id.image_view_eye){
+                if(view.getId() == R.id.eye_image_view){
                     switch (motionEvent.getAction()){
                         case MotionEvent.ACTION_DOWN:{
                             editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT);

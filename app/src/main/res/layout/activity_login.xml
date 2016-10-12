@@ -23,7 +23,7 @@
 
         <EditText
             style="@style/editTextLoginStyle"
-            android:id="@id/edit_text_login_mobile_phone_number"
+            android:id="@id/login_phone_edit_text"
             android:layout_marginTop="@dimen/margin_login_big_vertical"
             android:inputType="phone" />
 
@@ -42,24 +42,23 @@
 
             <EditText
                 style="@style/editTextLoginStyle"
-                android:id="@id/edit_text_login_password"
+                android:id="@id/login_password_edit_text"
                 android:layout_marginTop="@dimen/margin_login_small_vertical"
                 android:inputType="textPassword" />
 
             <ImageView
-                android:id="@id/image_view_eye"
+                android:id="@id/eye_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_login_text_image_vertical"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_eye_password_login"
-                android:visibility="gone"/>
+                android:src="@drawable/ic_eye_password_login" />
 
         </RelativeLayout>
 
         <Button
             style="@style/buttonLoginRegisterStyle"
-            android:id="@id/button_login_login"
+            android:id="@id/login_button"
             android:layout_marginTop="@dimen/margin_login_big_vertical" />
 
         <RelativeLayout
@@ -70,11 +69,10 @@
 
             <TextView
                 style="@style/textViewLoginStyle"
-                android:id="@id/text_view_forget_password"
+                android:id="@id/forget_password_text_view"
                 android:layout_marginTop="@dimen/margin_login_small_vertical"
                 android:text="@string/forget_password"
-                android:clickable="true"
-                android:visibility="gone"/>
+                android:clickable="true" />
 
         </RelativeLayout>
 
