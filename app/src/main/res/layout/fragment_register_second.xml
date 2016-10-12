@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <EditText
+            style="@style/editTextLoginStyle"
+            android:id="@id/reg_second_id_edit_text"
+            android:layout_marginTop="@dimen/margin_login_big_vertical" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_login_small_vertical"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/shape_baseline_login"/>
+
+        <RelativeLayout
+            android:layout_width="@dimen/button_login_register_width"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <EditText
+                style="@style/editTextLoginStyle"
+                android:id="@id/reg_second_nick_edit_text"
+                android:layout_marginTop="@dimen/margin_login_small_vertical" />
+
+        </RelativeLayout>
+
+        <Button
+            style="@style/buttonLoginRegisterStyle"
+            android:id="@id/reg_button"
+            android:layout_marginTop="@dimen/margin_login_big_vertical"
+            android:enabled="true"/>
+
+</LinearLayout>

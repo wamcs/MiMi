@@ -1,7 +1,11 @@
 package com.unique.app.community.loginAndRegister.forgetPassword;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -9,12 +13,10 @@ import android.widget.TextView;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
-import com.unique.app.community.base.Mvp.IPresenter;
 import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.global.conf;
-import com.unique.app.community.loginAndRegister.register.RegisterTwoActivity;
+import com.unique.app.community.loginAndRegister.login.LoginActivity;
 import com.unique.app.community.loginAndRegister.utils.Listeners;
-import com.unique.app.community.utils.ActivityStarter;
 
 import java.util.Locale;
 
@@ -30,23 +32,22 @@ import butterknife.OnClick;
 public class ForgetPasswordActivity extends BaseActivity<ForgetPasswordPresenter>
         implements IView {
 
-    @BindView(R.id.tool_bar_login_back_button)
+    @BindView(R.id.tool_bar_back_button)
     TextView textViewBackButton;
-    @BindView(R.id.tool_bar_login_title)
+    @BindView(R.id.tool_bar_title_text_view)
     TextView textViewTitle;
 
-
-    @BindView(R.id.edit_text_login_mobile_phone_number)
+    @BindView(R.id.forget_phone_edit_text)
     EditText editTextMobilePhoneNumber;
-    @BindView(R.id.edit_text_login_password)
+    @BindView(R.id.forget_password_edit_text)
     EditText editTextPassword;
-    @BindView(R.id.image_view_eye)
+    @BindView(R.id.eye_image_view)
     ImageView eyeImage;
-    @BindView(R.id.edit_text_login_verification_code)
+    @BindView(R.id.forget_ver_edit_text)
     EditText editTextVerificationCode;
-    @BindView(R.id.text_view_login_verification_code)
+    @BindView(R.id.forget_ver_text_view)
     TextView textViewVerificationCode;
-    @BindView(R.id.button_login_login)
+    @BindView(R.id.forget_button)
     Button buttonLogin;
 
     @Override
@@ -54,9 +55,14 @@ public class ForgetPasswordActivity extends BaseActivity<ForgetPasswordPresenter
         return new ForgetPasswordPresenter(mContext);
     }
 
+    public static void start(Context context, @Nullable Bundle bundle){
+        Intent starter = new Intent(context, ForgetPasswordActivity.class);
+        context.startActivity(starter, bundle);
+    }
+
     @Override
     protected int getLayout() {
-        return R.layout.activity_forget_password_and_register_one;
+        return R.layout.activity_forget_password;
     }
 
     @Override
@@ -75,22 +81,24 @@ public class ForgetPasswordActivity extends BaseActivity<ForgetPasswordPresenter
     protected void onStop(){
         super.onStop();
         // Stop count
-        changeVerificationText(conf.VERIFICATION_END_COUNT);
+        mPresenter.endCount();
     }
+
     /**
      *  Initialize all listeners
      */
-    @OnClick(R.id.button_login_login)
+    @OnClick(R.id.forget_button)
     void finishRegister(){
         mPresenter.finish();
     }
 
-    @OnClick(R.id.text_view_login_verification_code)
+    @OnClick(R.id.forget_ver_text_view)
     void getVerificationCode(){
         mPresenter.sendRequest();
+        mPresenter.startCount(textViewVerificationCode);
     }
 
-    @OnClick(R.id.tool_bar_login_back_button)
+    @OnClick(R.id.tool_bar_back_button)
     void getBack(){
         onBackPressed();
     }
@@ -109,41 +117,5 @@ public class ForgetPasswordActivity extends BaseActivity<ForgetPasswordPresenter
         editTextPassword.setHint(getResources().getString(R.string.new_password));
         buttonLogin.setText(R.string.finish);
         textViewTitle.setText(getResources().getString(R.string.find_back_password));
-    }
-
-    /**
-     * Counting verification code seconds
-     */
-
-    private Handler countHandler = new Handler(){
-
-        @Override
-        public void handleMessage(Message msg){
-            switch (msg.what){
-                case conf.VERIFICATION_START_COUNT:{
-                    textViewVerificationCode.setText(String.format(Locale.CHINA, "%ds",msg.arg1));
-                    textViewVerificationCode.setEnabled(false);
-                    break;
-                }
-                case conf.VERIFICATION_STOP_COUNT:{
-                    textViewVerificationCode.setText(getResources().getString(R.string.get_verification_code));
-                    textViewVerificationCode.setEnabled(true);
-                    break;
-                }
-            }
-        }
-    };
-
-    public void changeVerificationText(Integer count){
-        Message countMsg = new Message();
-        if(count != conf.VERIFICATION_END_COUNT) {
-            countMsg.what = conf.VERIFICATION_START_COUNT;
-            countMsg.arg1 = count;
-        }else{
-            // Refresh at -1s
-            countMsg.what = conf.VERIFICATION_STOP_COUNT;
-            mPresenter.endCount();
-        }
-        countHandler.sendMessage(countMsg);
     }
 }
