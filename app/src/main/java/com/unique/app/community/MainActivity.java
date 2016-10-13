@@ -7,7 +7,6 @@ import android.view.View;
 import com.unique.app.community.global.AppData;
 import com.unique.app.community.loginAndRegister.login.LoginActivity;
 import com.unique.app.community.loginAndRegister.register.RegisterActivity;
-import com.unique.app.community.utils.ActivityStarter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-        ActivityStarter.start(this, LoginActivity.class, null);
+        LoginActivity.start(this, null);
     }
 
     public void register(View view){
-        ActivityStarter.start(this, RegisterActivity.class, null);
+        RegisterActivity.start(this, null);
     }
 }

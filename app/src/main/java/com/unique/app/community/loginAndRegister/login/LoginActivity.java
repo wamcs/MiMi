@@ -1,11 +1,9 @@
 package com.unique.app.community.loginAndRegister.login;
 
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,13 +12,7 @@ import android.widget.TextView;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.base.Mvp.IView;
-import com.unique.app.community.global.AppData;
-import com.unique.app.community.loginAndRegister.forgetPassword.ForgetPasswordActivity;
-import com.unique.app.community.loginAndRegister.forgetPassword.ForgetPasswordPresenter;
-import com.unique.app.community.loginAndRegister.register.RegisterActivity;
-import com.unique.app.community.loginAndRegister.register.RegisterTwoActivity;
 import com.unique.app.community.loginAndRegister.utils.Listeners;
-import com.unique.app.community.utils.ActivityStarter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,21 +26,21 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity<LoginPresenter>
         implements IView{
 
-    @BindView(R.id.tool_bar_login_back_button)
+    @BindView(R.id.tool_bar_back_button)
     TextView textViewBackButton;
-    @BindView(R.id.tool_bar_login_title)
+    @BindView(R.id.tool_bar_title_text_view)
     TextView textViewTitle;
 
 
-    @BindView(R.id.edit_text_login_mobile_phone_number)
+    @BindView(R.id.login_phone_edit_text)
     EditText editTextMobilePhoneNumber;
-    @BindView(R.id.edit_text_login_password)
+    @BindView(R.id.login_password_edit_text)
     EditText editTextPassword;
-    @BindView(R.id.button_login_login)
+    @BindView(R.id.login_button)
     Button buttonLogin;
-    @BindView(R.id.text_view_forget_password)
+    @BindView(R.id.forget_password_text_view)
     TextView textViewForgetPassword;
-    @BindView(R.id.image_view_eye)
+    @BindView(R.id.eye_image_view)
     ImageView eyeImage;
 
     @Override
@@ -56,9 +48,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
         return new LoginPresenter(mContext);
     }
 
+    public static void start(Context context, @Nullable Bundle bundle){
+        Intent starter = new Intent(context, LoginActivity.class);
+        context.startActivity(starter, bundle);
+    }
+
     @Override
     protected int getLayout() {
-        return R.layout.activity_login_and_register_two;
+        return R.layout.activity_login;
     }
 
     @Override
@@ -78,17 +75,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
      *  Initialize all listeners
      */
 
-    @OnClick(R.id.button_login_login)
+    @OnClick(R.id.login_button)
     void login(){
         mPresenter.login();
     }
 
-    @OnClick(R.id.text_view_forget_password)
-    void goToForgetPassword(){
-        ActivityStarter.start(this, ForgetPasswordActivity.class, null);
+    @OnClick(R.id.forget_password_text_view)
+    void forgetPassword(){
+       mPresenter.forget();
     }
 
-    @OnClick(R.id.tool_bar_login_back_button)
+    @OnClick(R.id.tool_bar_back_button)
     void getBack(){
         onBackPressed();
     }
@@ -105,8 +102,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     private void initialTexts(){
         editTextMobilePhoneNumber.setHint(getResources().getString(R.string.mobile_phone_number));
         editTextPassword.setHint(getResources().getString(R.string.password));
-        eyeImage.setVisibility(View.VISIBLE);
-        textViewForgetPassword.setVisibility(View.VISIBLE);
         buttonLogin.setText(getResources().getString(R.string.login));
         textViewTitle.setText(getResources().getString(R.string.login));
     }
