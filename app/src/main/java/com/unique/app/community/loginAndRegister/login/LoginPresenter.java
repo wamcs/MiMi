@@ -25,7 +25,7 @@ public class LoginPresenter extends BasePresenter<LoginActivity>
         // To login
         ToastUtil.TextToast("Login successfully!");
 
-        //TODO:if success, finish activity,and add info to Account
+        //TODO:if success,finish activity,and add info to Account
 
     }
 
