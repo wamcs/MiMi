@@ -41,10 +41,18 @@
     <color name="grey01">#191919</color>
     <color name="grey00">#FF000000</color>
 
+
     <color name="purple_shadow_color">#6489849b</color>
     <color name="main_page_shadow_color_dark">#12000000</color>
     <color name="main_page_shadow_color_mid">#09000000</color>
     <color name="main_page_shadow_color_light">#0000</color>
 
+
+    <!---colors in login or register pages-->
+    <color name="black_text_login">#282828</color>
+    <color name="black_hint_and_button_login">#666666</color>
+    <color name="grey_baseline_and_button_login">#c9c9c9</color>
+    <color name="orange_accent_button_and_text_login">#ff8e5d</color>
+    <color name="grey_eye_vector_login">#FFc9c9c9</color>>>>>>>> alex
 
 </resources>

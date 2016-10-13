@@ -9,7 +9,6 @@ package com.unique.app.community.global;
 /**
  * this class store constant value
  */
-public class conf {
-
+public final class conf {
 
 }

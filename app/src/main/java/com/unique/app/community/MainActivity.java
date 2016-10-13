@@ -1,7 +1,9 @@
 package com.unique.app.community;
 
 import android.os.Bundle;
+
 import android.widget.ImageView;
+
 
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.global.App;

@@ -43,6 +43,7 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T>{
     @Override
     public void detachView() {
         this.mView = null;
+        mActivity = null;
         unSubscribe();
     }
 }

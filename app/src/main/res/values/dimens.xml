@@ -17,6 +17,23 @@
     <!--Default toolbar height-->
     <dimen name="default_toolbar_height">147px</dimen>
 
+
     <!--MainActivity dimens-->
     <dimen name="main_activity_tab_layout_height">65dp</dimen>
+
+    <!--Login and register page dimens-->
+    <dimen name="button_login_register_width">280dp</dimen>
+    <dimen name="button_login_register_height">44dp</dimen>
+    <dimen name="button_login_register_radius">22dp</dimen>
+    <dimen name="button_login_register_text_size">17sp</dimen>
+    <dimen name="margin_login_big_vertical">45dp</dimen>
+    <dimen name="margin_login_small_vertical">15dp</dimen>
+    <dimen name="margin_login_text_image_vertical">11dp</dimen>
+    <dimen name="margin_login_text_horizon">30dp</dimen>
+    <dimen name="base_line_login_width">280dp</dimen>
+    <dimen name="base_line_login_height">0.5dp</dimen>
+    <dimen name="edit_text_login_text_size">12sp</dimen>
+    <dimen name="edit_text_login_height">12dp</dimen>
+    
+
 </resources>
