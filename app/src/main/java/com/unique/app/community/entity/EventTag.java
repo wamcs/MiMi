@@ -15,7 +15,7 @@ import com.avos.avoscloud.AVObject;
 @AVClassName("EventTag")
 public class EventTag extends AVObject {
 
-    public static final String TITLE = "title";
+    private static final String TITLE = "title";
 
     public EventTag(){
         super();

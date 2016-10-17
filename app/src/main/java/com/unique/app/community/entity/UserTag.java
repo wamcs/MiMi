@@ -17,7 +17,7 @@ import com.avos.avoscloud.AVObject;
 @AVClassName("UserTag")
 public class UserTag extends AVObject {
 
-    public static final String TITLE = "title";
+    private static final String TITLE = "title";
 
     public UserTag(){
         super();

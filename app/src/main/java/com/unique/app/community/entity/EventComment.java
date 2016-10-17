@@ -13,10 +13,42 @@ import com.avos.avoscloud.AVObject;
 @AVClassName("EventComment")
 public class EventComment extends AVObject{
 
-    public static final String CONTENT = "content";
-    public static final String REPLYS = "replys";
-    public static final String EVENT = "event";
-    public static final String SENDER = "sender";
+    private static final String CONTENT = "content";
+    private static final String RECEIVER = "receiver";
+    private static final String EVENT = "event";
+    private static final String SENDER = "sender";
+
+    public Event getEvent(){
+        return getAVObject(EVENT);
+    }
+
+    public void setEvent(Event event){
+        put(EVENT,event);
+    }
+
+    public User getSender(){
+        return getAVUser(SENDER);
+    }
+
+    public void setSender(User sender){
+        put(SENDER,sender);
+    }
+
+    public User getRecevier(){
+        return getAVUser(RECEIVER);
+    }
+
+    public void setReceiver(User receiver){
+        put(RECEIVER,receiver);
+    }
+
+    public String getContent(){
+        return getString(CONTENT);
+    }
+
+    public void setContent(String content){
+        put(CONTENT,content);
+    }
 
 
     public EventComment(){}

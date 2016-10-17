@@ -8,7 +8,6 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.unique.app.community.entity.Event;
 import com.unique.app.community.entity.EventComment;
-import com.unique.app.community.entity.EventCommentReply;
 import com.unique.app.community.entity.EventTag;
 import com.unique.app.community.entity.User;
 import com.unique.app.community.entity.UserTag;
