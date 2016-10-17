@@ -33,7 +33,6 @@ public class App extends Application {
         AVObject.registerSubclass(EventTag.class);
         AVObject.registerSubclass(Event.class);
         AVObject.registerSubclass(EventComment.class);
-        AVObject.registerSubclass(EventCommentReply.class);
         AVUser.alwaysUseSubUserClass(User.class);
         AVOSCloud.initialize(this,"X7BySQECOns3ebTvqCO12pbs-gzGzoHsz","7VyX2CaVrfDE7JXUgrj4VbUP");
     }
