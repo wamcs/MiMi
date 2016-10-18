@@ -6,11 +6,11 @@ import android.app.Application;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
-import com.unique.app.community.entity.Event;
-import com.unique.app.community.entity.EventComment;
-import com.unique.app.community.entity.EventTag;
-import com.unique.app.community.entity.User;
-import com.unique.app.community.entity.UserTag;
+import com.unique.app.community.model.entity.Event;
+import com.unique.app.community.model.entity.EventComment;
+import com.unique.app.community.model.entity.EventTag;
+import com.unique.app.community.model.entity.User;
+import com.unique.app.community.model.entity.UserTag;
 
 import java.util.Stack;
 

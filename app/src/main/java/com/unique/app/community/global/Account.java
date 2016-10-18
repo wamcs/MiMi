@@ -7,6 +7,10 @@ import com.unique.app.community.utils.ShaPrefer;
  * mail: kaili@hustunique.com
  * Created on 10/13/16.
  */
+
+//全使用leancloud的sdk,这个类应该废了。不过别人的sdk封的太好也不好,什么都不用做了。
+//但ios的后台已经写死了,没法改,不能用rest api来构了。如果以后迁移的话,自己做缓存这个类还是要用的
+//估计会和有书一样吧==
 public class Account {
 
     public static void setPhoneNumber(String number) {
