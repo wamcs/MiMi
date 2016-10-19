@@ -3,18 +3,17 @@ package com.unique.app.community.maindisplay.ui.fragment;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseFragment;
 import com.unique.app.community.base.Mvp.IView;
-import com.unique.app.community.maindisplay.presenter.UserCenterPresenter;
+import com.unique.app.community.maindisplay.presenter.ClassifyPresenter;
 
 /**
  * Author: Wamcs
  * mail: kaili@hustunique.com
- * Created on 10/8/16.
+ * Created on 10/20/16.
  */
-public class UserCenterFragment extends BaseFragment<UserCenterPresenter> implements IView{
-
+public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements IView{
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_user_center;
+        return R.layout.fragment_classification;
     }
 
     @Override
@@ -23,7 +22,7 @@ public class UserCenterFragment extends BaseFragment<UserCenterPresenter> implem
     }
 
     @Override
-    protected UserCenterPresenter getPresenter() {
-        return new UserCenterPresenter(this);
+    protected ClassifyPresenter getPresenter() {
+        return new ClassifyPresenter(this);
     }
 }

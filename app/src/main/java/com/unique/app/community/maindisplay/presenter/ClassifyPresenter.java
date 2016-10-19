@@ -4,17 +4,16 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import com.unique.app.community.base.Mvp.BasePresenter;
-import com.unique.app.community.maindisplay.ui.fragment.UserCenterFragment;
+import com.unique.app.community.maindisplay.ui.fragment.ClassifyFragment;
 
 /**
  * Author: Wamcs
  * mail: kaili@hustunique.com
- * Created on 10/8/16.
+ * Created on 10/19/16.
  */
-public class UserCenterPresenter extends BasePresenter<UserCenterFragment>{
+public class ClassifyPresenter extends BasePresenter<ClassifyFragment>{
 
-
-    public UserCenterPresenter(Fragment fragment) {
+    public ClassifyPresenter(Fragment fragment) {
         super(fragment);
     }
 }

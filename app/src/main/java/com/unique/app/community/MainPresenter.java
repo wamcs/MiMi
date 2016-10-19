@@ -3,9 +3,13 @@ package com.unique.app.community;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
+import com.unique.app.community.maindisplay.ui.fragment.DisplayFragment;
+import com.unique.app.community.maindisplay.ui.fragment.MessageFragment;
+import com.unique.app.community.maindisplay.ui.fragment.UserCenterFragment;
 
 import java.util.ArrayList;
 
@@ -14,7 +18,7 @@ import java.util.ArrayList;
  * mail: kaili@hustunique.com
  * Created on 10/8/16.
  */
-public class MainPresenter extends BasePresenter {
+public class MainPresenter extends BasePresenter<MainActivity> {
 
 
     private int mCurrentPage = -1;
@@ -51,6 +55,7 @@ public class MainPresenter extends BasePresenter {
 
         //以name作为tag
         if(!fragment.isAdded()){
+            Log.d("lk","dsa");
             ft.add(R.id.container_layout,fragment,fragment.getClass().getName());
         }else {
             ft.show(fragment);
@@ -63,9 +68,9 @@ public class MainPresenter extends BasePresenter {
     }
 
     private void init(){
-//        fragments.add(new DisplayFragment());
-//        fragments.add(new MessageFragment());
-//        fragments.add(new UserCenterFragment());
+        fragments.add(new DisplayFragment());
+        fragments.add(new MessageFragment());
+        fragments.add(new UserCenterFragment());
         changeTab(0);
     }
 }
