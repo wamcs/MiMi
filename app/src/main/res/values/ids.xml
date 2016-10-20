@@ -40,5 +40,10 @@
     <item name="tool_bar_back_button" type="id"/>
     <item name="tool_bar_title_text_view" type="id"/>
 
+    <!--details activity-->
+    <item name="detail_view_flipper" type="id"/>
+    <item name="detail_text_view_flipper" type="id"/>
+    <item name="detail_title_text_view" type="id"/>
+
 
 </resources>

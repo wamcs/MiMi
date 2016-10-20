@@ -42,4 +42,15 @@
         <item name="android:textSize">@dimen/edit_text_login_text_size</item>
     </style>
 
+    <!--Detail page styles.-->
+    <style name="tagTextViewFlipperDetailStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white_text_tag</item>
+        <item name="android:background">@drawable/shape_text_of_image_bg</item>
+    </style>
+
+    <style name="titleTextViewDetailStyle">
+
+    </style>
+
 </resources>
