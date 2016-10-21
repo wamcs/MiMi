@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.maindisplay.ui.fragment.DisplayFragment;
 import com.unique.app.community.maindisplay.ui.fragment.MessageFragment;
@@ -55,7 +54,6 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
         //以name作为tag
         if(!fragment.isAdded()){
-            Log.d("lk","dsa");
             ft.add(R.id.container_layout,fragment,fragment.getClass().getName());
         }else {
             ft.show(fragment);

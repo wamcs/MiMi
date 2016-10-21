@@ -100,7 +100,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
         return isRefreshing;
     }
 
-    private void changeRefreshState(boolean refreshing) {
+    protected void changeRefreshState(boolean refreshing) {
         this.isRefreshing = refreshing;
         onRefreshStateChanged(refreshing);
     }
@@ -109,13 +109,13 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
      * View will implement RefreshListener and it will call this call-back method to perfect logic
      * @param isRefreshing
      */
-    private void onRefreshStateChanged(boolean isRefreshing) {
+    protected void onRefreshStateChanged(boolean isRefreshing) {
         if (listener != null) {
             listener.onRefreshStateChanged(isRefreshing);
         }
     }
 
-    private void onError(Throwable t) {
+    protected void onError(Throwable t) {
         if (!NetworkUtil.checkIsNetworkConnected()) {
             ToastUtil.TextToast(R.string.no_network);
             return;

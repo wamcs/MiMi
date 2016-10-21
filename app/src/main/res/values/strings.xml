@@ -33,4 +33,7 @@
     <string name="display_show_events">花园</string>
     <string name="display_classification">分类</string>
 
+    <string name="loading_more">加载更多......</string>
+
+
 </resources>

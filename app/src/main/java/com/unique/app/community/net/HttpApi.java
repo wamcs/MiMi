@@ -1,8 +1,11 @@
 package com.unique.app.community.net;
 
 
+import com.avos.avoscloud.AVRelation;
 import com.unique.app.community.entity.Event;
+import com.unique.app.community.entity.EventComment;
 import com.unique.app.community.entity.EventTag;
+import com.unique.app.community.entity.User;
 
 import java.util.List;
 
@@ -53,5 +56,17 @@ public class HttpApi {
 
     public static Observable<Response<Void>> postEvent(Event event){
         return ActivityApi.getInstant().postEvent(event);
+    }
+
+    public static Observable<Response<List<EventTag>>> getRelativeEventTag(AVRelation<EventTag> avRelation){
+        return OtherApi.getInstant().getRelativeEventsTagInner(avRelation);
+    }
+
+    public static Observable<Response<List<EventComment>>> getRelativeEventComment(AVRelation<EventComment> avRelation){
+        return OtherApi.getInstant().getRelativeEventsCommentsInner(avRelation);
+    }
+
+    public static Observable<Response<List<User>>> getRelativeUser(AVRelation<User> avRelation){
+        return OtherApi.getInstant().getRelativeUsersInner(avRelation);
     }
 }

@@ -3,12 +3,23 @@ package com.unique.app.community.entity;
 import android.os.Parcel;
 
 import com.avos.avoscloud.AVClassName;
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
+import com.avos.avoscloud.FindCallback;
+import com.unique.app.community.net.HttpApi;
+import com.unique.app.community.net.Response;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import rx.Observable;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Author: Wamcs
@@ -19,11 +30,16 @@ import java.util.List;
 @AVClassName("Event")
 public class Event extends AVObject {
 
+    private List<User> participation;
+    private List<EventTag> tags;
+    private List<EventComment> comments;
+
     // 活动状态
     // 1-有效 0-无效
     private static final String STATE = "state";
     public static final int invalid = 0;
     public static final int valid = 1;
+
     // 活动所需人数
     private static final String EXCEPTED = "excepted";
     //地点
@@ -49,20 +65,54 @@ public class Event extends AVObject {
     //发起人
     private static final String SPONSOR = "sponsor";
 
-    public List<AVFile> getImage(){
-        return getList(IMAGE);
+    public ArrayList<String> getImage(){
+        ArrayList<String> urls = new ArrayList<>();
+        ArrayList arrayList = (ArrayList) get(IMAGE);
+        if (arrayList == null || arrayList.size() == 0){
+            Timber.d("no image error");
+        }else {
+            for (Object file : arrayList){
+                urls.add(((AVFile)file).getUrl());
+            }
+        }
+        return urls;
     }
 
     public void setImage(List<AVFile> images){
-        put(IMAGE,images);
+        addAll(IMAGE,images);
     }
 
-    public AVRelation<EventComment> getComments(){
-        return getRelation(COMMENTS);
+    public List<EventComment> getComments(){
+
+        if (comments == null) {
+            AVRelation<EventComment> avRelation = getRelation(COMMENTS);
+            HttpApi.getRelativeEventComment(avRelation)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.io())
+                    .subscribe(new Action1<Response<List<EventComment>>>() {
+                        @Override
+                        public void call(Response<List<EventComment>> listResponse) {
+                            if (listResponse.getCode() == Response.SUCCESS){
+                                comments = listResponse.getData();
+                            }else {
+                                Timber.d("getting relative comments failed.message is %s",listResponse.getMessage());
+                            }
+                        }
+                    });
+        }
+
+        return comments;
     }
 
-    public void setComments(AVRelation<EventComment> comments){
-        put(COMMENTS,comments);
+    public void setComments(EventComment comment){
+        AVRelation<EventComment> avRelation = new AVRelation<>();
+        if (comments == null){
+            comments = getComments();
+        }
+        avRelation.addAll(comments);
+        avRelation.add(comment);
+        put(COMMENTS,avRelation);
+
     }
 
     public String getContent(){
@@ -113,20 +163,67 @@ public class Event extends AVObject {
         put(TYPE,type);
     }
 
-    public AVRelation<User> getParticipation(){
-        return getRelation(PARTICIPATION);
+    public List<User> getParticipation(){
+
+        if (participation == null) {
+            AVRelation<User> avRelation = getRelation(PARTICIPATION);
+            HttpApi.getRelativeUser(avRelation)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.io())
+                    .subscribe(new Action1<Response<List<User>>>() {
+                        @Override
+                        public void call(Response<List<User>> listResponse) {
+                            if (listResponse.getCode() == Response.SUCCESS){
+                                participation = listResponse.getData();
+                            }else {
+                                Timber.d("getting relative user failed.message is %s",listResponse.getMessage());
+                            }
+                        }
+                    });
+        }
+
+        return participation;
     }
 
-    public void setParticipation(AVRelation<User> participation){
-        put(PARTICIPATION,participation);
+    public void setParticipation(User user){
+        AVRelation<User> avRelation = new AVRelation<>();
+        if (participation == null){
+            participation = getParticipation();
+        }
+        avRelation.addAll(participation);
+        avRelation.add(user);
+        put(PARTICIPATION,avRelation);
     }
 
-    public AVRelation<EventTag> getTags(){
-        return getRelation(TAG);
+    public List<EventTag> getTags(){
+        if (tags == null) {
+            AVRelation<EventTag> avRelation = getRelation(TAG);
+            HttpApi.getRelativeEventTag(avRelation)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.io())
+                    .subscribe(new Action1<Response<List<EventTag>>>() {
+                        @Override
+                        public void call(Response<List<EventTag>> listResponse) {
+                            if (listResponse.getCode() == Response.SUCCESS){
+                                tags = listResponse.getData();
+                            }else {
+                                Timber.d("getting relative tags failed.message is %s",listResponse.getMessage());
+                            }
+                        }
+                    });
+        }
+
+        return tags;
     }
 
-    public void setTags(AVRelation<EventTag> tags){
-        put(TAG,tags);
+    public void setTags(List<EventTag> tagList){
+        AVRelation<EventTag> avRelation = new AVRelation<>();
+        if (tags == null){
+            tags = getTags();
+        }
+        avRelation.addAll(tags);
+        avRelation.addAll(tagList);
+        put(TAG,avRelation);
     }
 
     public String getSubject(){

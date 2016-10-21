@@ -18,7 +18,7 @@
 
 
     <!--MainActivity dimens-->
-    <dimen name="main_activity_tab_layout_height">65dp</dimen>
+    <dimen name="main_activity_tab_layout_height">48dp</dimen>
 
     <!--Login and register page dimens-->
     <dimen name="button_login_register_width">280dp</dimen>
@@ -35,7 +35,20 @@
     <dimen name="edit_text_login_height">12dp</dimen>
 
     <!--displayFragment dimens-->
-    <dimen name="dispaly_indicator_line_height">2dp</dimen>
+    <dimen name="display_indicator_line_height">2dp</dimen>
+    <dimen name="display_event_item_height">265dp</dimen>
+    <dimen name="display_event_item_margin">15dp</dimen>
+    <dimen name="display_event_item_corner">20dp</dimen>
+    <dimen name="display_event_item_image_height">185dp</dimen>
+    <dimen name="display_event_item_tag_margin">15dp</dimen>
+    <dimen name="display_event_item_tag_interval">10dp</dimen>
+    <dimen name="display_event_item_text_margin">15dp</dimen>
+    <dimen name="display_event_item_icon_margin_left">10dp</dimen>
+    <dimen name="display_event_item_sponsor_image_size">40dp</dimen>
+    <dimen name="display_event_item_title_text_size">17sp</dimen>
+    <dimen name="display_event_item_info_text_size">13sp</dimen>
+    <dimen name="display_event_item_label_text_size">12sp</dimen>
+    
     
 
 </resources>

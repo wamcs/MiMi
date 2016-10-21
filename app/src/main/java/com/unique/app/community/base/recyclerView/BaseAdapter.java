@@ -12,7 +12,7 @@ import java.util.List;
  */
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder<T>> {
 
-    private List<T> dataList;
+    protected List<T> dataList;
 
 
     @Override

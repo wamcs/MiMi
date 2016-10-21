@@ -9,7 +9,7 @@
         android:id="@id/display_tab_layout"
         app:tabIndicatorColor="@color/basic_orange"
         app:tabSelectedTextColor="@color/basic_orange"
-        app:tabIndicatorHeight="@dimen/dispaly_indicator_line_height"
+        app:tabIndicatorHeight="@dimen/display_indicator_line_height"
         app:tabTextColor="@color/basic_junior_text_black"
         />
     <android.support.v4.view.ViewPager

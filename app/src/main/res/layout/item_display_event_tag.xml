@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_marginEnd="@dimen/display_event_item_tag_interval"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/display_item_event_tag"
+        android:textSize="@dimen/display_event_item_label_text_size"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/white10"
+        android:background="@drawable/bg_event_tag" />
+
+
+</LinearLayout>
