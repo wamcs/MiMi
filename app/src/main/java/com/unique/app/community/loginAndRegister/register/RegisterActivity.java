@@ -32,8 +32,6 @@ import butterknife.OnClick;
 public class RegisterActivity extends BaseActivity<RegisterPresenter>
         implements IView{
 
-    @BindView(R.id.tool_bar_back_button)
-    TextView backButton;
     @BindView(R.id.tool_bar_title_text_view)
     TextView titleText;
 
@@ -42,10 +40,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter>
         return new RegisterPresenter(mContext);
     }
 
-    public static void start(Context context, @Nullable Bundle bundle){
-        Intent starter = new Intent(context, RegisterActivity.class);
-        context.startActivity(starter, bundle);
-    }
 
     @Override
     protected int getLayout() {

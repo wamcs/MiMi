@@ -9,7 +9,7 @@
                 android:radius="@dimen/button_login_register_radius"/>
 
             <solid
-                android:color="@color/orange_accent_button_and_text_login"/>
+                android:color="@color/basic_orange"/>
         </shape>
     </item>
 

@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <!--Login and Register pages styles.-->
@@ -14,8 +17,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:textColorHint">@color/black_hint_and_button_login</item>
-        <item name="android:textColor">@color/orange_accent_button_and_text_login</item>
+        <item name="android:textColorHint">@color/basic_junior_text_black</item>
+        <item name="android:textColor">@color/basic_orange</item>
         <item name="android:textSize">@dimen/edit_text_login_text_size</item>
         <item name="android:background">@null</item>
         <item name="android:maxLines">1</item>
@@ -35,8 +38,19 @@
     <style name="textViewLoginStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textColor">@color/black_hint_and_button_login</item>
+        <item name="android:textColor">@color/basic_junior_text_black</item>
         <item name="android:textSize">@dimen/edit_text_login_text_size</item>
+    </style>
+
+    <!--Detail page styles.-->
+    <style name="tagTextViewFlipperDetailStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white_text_tag</item>
+        <item name="android:background">@drawable/shape_text_of_image_bg</item>
+    </style>
+
+    <style name="titleTextViewDetailStyle">
+
     </style>
 
 </resources>

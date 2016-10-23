@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black02">
+
+        <include
+            layout="@layout/layout_default_toolbar"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_viewflipper_height">
+
+        <ViewFlipper
+            android:id="@id/detail_view_flipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            style="@style/tagTextViewFlipperDetailStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="@dimen/detail_padding_vertical_tag"
+            android:paddingBottom="@dimen/detail_padding_vertical_tag"
+            android:paddingStart="@dimen/detail_padding_horizon_tag"
+            android:paddingEnd="@dimen/detail_padding_horizon_tag"
+            android:layout_marginEnd="@dimen/detail_margin_normal_horizon"
+            android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@id/detail_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

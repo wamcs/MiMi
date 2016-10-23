@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.unique.app.community.MainActivity">
+    >
 
-    <Button
-        android:id="@id/login_button"
+    <android.support.v7.widget.Toolbar
+        android:id="@id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="login"/>
+        android:layout_height="@dimen/default_toolbar_height">
+        <include layout="@layout/layout_default_toolbar" />
+    </android.support.v7.widget.Toolbar>
 
-    <Button
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:onClick="register"
-        android:layout_below="@id/login_button"/>
+        android:layout_height="match_parent"
+        android:id="@+id/container_layout"
+        android:layout_below="@id/tool_bar"
+        android:layout_above="@id/bottom_tab_layout"/>
 
-</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:background="@drawable/custom_shadow_up"
+        android:layout_above="@id/bottom_tab_layout"
+        />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:id = "@id/bottom_tab_layout"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_activity_tab_layout_height">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@id/page_1"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@id/page_2"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@id/page_3"/>
+
+    </LinearLayout>
+    </RelativeLayout>

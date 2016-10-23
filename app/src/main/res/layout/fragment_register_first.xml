@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/margin_login_text_horizon"
-                android:textColor="@color/orange_accent_button_and_text_login"
+                android:textColor="@color/basic_orange"
                 android:text="@string/get_verification_code"
                 android:clickable="true"/>
 

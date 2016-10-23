@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="tool_bar" type="id"/>
-    <item name="default_tool_bar_imageview" type="id"/>
+    <item name="default_tool_bar_left_imageview" type="id"/>
     <item name="default_tool_bar_textview" type="id"/>
+    <item name="default_tool_bar_right_imageview" type="id"/>
+
+
+    <!--mainActivity ids-->
+    <item name="page_1" type="id"/>
+    <item name="page_2" type="id"/>
+    <item name="page_3" type="id"/>
+    <item name="bottom_tab_layout" type="id"/>
 
     <!--login, register and iForget activity-->
     <item name="login_phone_edit_text" type="id"/>
@@ -33,5 +41,8 @@
     <item name="tool_bar_back_button" type="id"/>
     <item name="tool_bar_title_text_view" type="id"/>
 
+    <!--displayFragment ids-->
+    <item name="display_tab_layout" type="id"/>
+    <item name="display_viewpager" type="id"/>
 
 </resources>

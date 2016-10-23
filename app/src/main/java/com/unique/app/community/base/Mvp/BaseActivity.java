@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.unique.app.community.R;
+import com.unique.app.community.global.App;
 
 import butterknife.ButterKnife;
 
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivity {
 
     protected T mPresenter;
-    protected Activity mContext;
+    protected AppCompatActivity mContext;
 
     Toolbar mToolbar;
 
@@ -30,6 +31,7 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         ButterKnife.bind(this);
+        App.getInstance().addActivity(this);
         mContext = this;
         mPresenter = getPresenter();
         if (isToolbarEnable()){
@@ -45,6 +47,7 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
+        App.getInstance().finishActivity(this);
     }
 
     protected boolean isToolbarEnable() {

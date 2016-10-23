@@ -3,17 +3,22 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="shadow_height">10dp</dimen>
+
 
     <!-- Default toolbar dimens-->
-    <dimen name="default_toolbar_imageview_padding">40px</dimen>
-    <dimen name="default_toolbar_imageview_padding_left">26px</dimen>
-    <dimen name="default_toolbar_textview_margin_left">39px</dimen>
+    <dimen name="default_toolbar_imageview_padding">10dp</dimen>
+    <dimen name="default_toolbar_imageview_padding_right">20dp</dimen>
     <dimen name="default_toolbar_textview_padding">13px</dimen>
     <dimen name="default_toolbar_textview_text_size">18sp</dimen>
     <dimen name="default_toolbar_textview_menu_text_size">18sp</dimen>
 
     <!--Default toolbar height-->
-    <dimen name="default_toolbar_height">147px</dimen>
+    <dimen name="default_toolbar_height">75dp</dimen>
+
+
+    <!--MainActivity dimens-->
+    <dimen name="main_activity_tab_layout_height">65dp</dimen>
 
     <!--Login and register page dimens-->
     <dimen name="button_login_register_width">280dp</dimen>
@@ -28,5 +33,21 @@
     <dimen name="base_line_login_height">0.5dp</dimen>
     <dimen name="edit_text_login_text_size">12sp</dimen>
     <dimen name="edit_text_login_height">12dp</dimen>
+
+    <!--displayFragment dimens-->
+    <dimen name="dispaly_indicator_line_height">2dp</dimen>
     
+    <!--Detail activity dimens-->
+    <dimen name="detail_viewflipper_height">200dp</dimen>
+    <dimen name="detail_margin_thirty_vertical">15dp</dimen>
+    <dimen name="detail_margin_forty_vertical">20dp</dimen>
+    <dimen name="detail_margin_thirty_horizon">15dp</dimen>
+    <dimen name="detail_margin_fifty_horizon">25dp</dimen>
+    <dimen name="detail_margin_normal_horizon">12dp</dimen>
+    <dimen name="detail_margin_small_icon_horizon">2.5dp</dimen>
+    <dimen name="detail_margin_between_icon_text_horizon">10dp</dimen>
+    <dimen name="detail_padding_horizon_tag">10dp</dimen>
+    <dimen name="detail_padding_vertical_tag">5dp</dimen>
+    <dimen name="detail_button_height">48dp</dimen>
+
 </resources>

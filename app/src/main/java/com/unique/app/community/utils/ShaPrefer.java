@@ -11,7 +11,7 @@ import com.unique.app.community.global.AppData;
  * mail: kaili@hustunique.com
  * Created on 9/28/16.
  */
-public class Sharefer {
+public class ShaPrefer {
 
     private static SharedPreferences preferences;
 
