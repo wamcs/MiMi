@@ -57,6 +57,11 @@
     <color name="grey_baseline_and_button_login">#c9c9c9</color>
     <color name="grey_eye_vector_login">#FFc9c9c9</color>
 
+    <!--colors in details page-->
+    <color name="grey_tag_view_flipper">@color/black06</color>
+    <color name="white_text_tag">@color/white10</color>
+    <color name="grey_small_title">#656565</color>
+    <color name="orange_button">#c8ff8e5d</color>
 
 
 </resources>
