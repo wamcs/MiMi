@@ -18,6 +18,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/display_event_item_image_height"
+                android:background="@mipmap/need_to_remove"
                 android:id="@id/display_item_image"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
                 android:layout_height="@dimen/display_event_item_sponsor_image_size"
                 android:id="@id/display_item_sponsor_image"
                 android:layout_marginTop="160dp"
+                android:src="@mipmap/default_avatar"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/display_event_item_text_margin"/>
 

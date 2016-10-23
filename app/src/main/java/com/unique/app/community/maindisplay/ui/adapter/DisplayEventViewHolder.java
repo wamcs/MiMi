@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Func1;
@@ -55,6 +56,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     public DisplayEventViewHolder(ViewGroup parent, DisplayEventsFragment fragment) {
         super(parent, R.layout.item_display_events);
         this.fragment = fragment;
+        ButterKnife.bind(this,itemView);
     }
 
 
@@ -72,20 +74,25 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     }
 
     private void parseImage(Event event) {
-
+        if (event.getImage().size() == 0){
+            return;
+        }
         Glide.with(fragment).load(event.getImage().get(0))
                 .error(R.mipmap.need_to_remove)
                 .into(displayItemImage);
     }
 
     private void parseSponsorImage(Event event) {
+        if (event.getSponsor().getAvatat() == null){
+            return;
+        }
         Glide.with(fragment).load(event.getSponsor().getAvatat().getUrl())
                 .error(R.mipmap.default_avatar).into(displayItemSponsorImage);
     }
 
     private void parseText(Event event) {
         displayItemPositionText.setText(event.getPlace());
-        displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getParticipation().size(), event.getExcepted()));
+        //displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getParticipation().size(), event.getExcepted()));
         displayItemActivityTimeText.setText(TimeUtils.parseTime(event.getTime()));
         displayItemReleaseTimeText.setText(TimeUtils.parseTime(event.getCreatedAt()));
     }

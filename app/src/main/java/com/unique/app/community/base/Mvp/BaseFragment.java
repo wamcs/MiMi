@@ -38,8 +38,8 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        initEventAndData();
         mPresenter = getPresenter();
+        initEventAndData();
     }
 
     protected abstract int getLayoutId();

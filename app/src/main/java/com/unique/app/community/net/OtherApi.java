@@ -1,5 +1,7 @@
 package com.unique.app.community.net;
 
+import android.util.Log;
+
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.FindCallback;
@@ -38,6 +40,7 @@ public class OtherApi {
                 @Override
                 public void done(List<EventTag> list, AVException e) {
                     Response<List<EventTag>> response = new Response<List<EventTag>>();
+                    response.setData(list);
                     if (e != null){
                         response.setCode(e.getCode());
                         response.setMessage(e.getMessage());

@@ -58,4 +58,26 @@
     <item name="display_item_root" type="id"/>
     
 
+    <!--details activity-->
+    <item name="detail_scroll_layout" type="id"/>
+    <item name="detail_view_flipper" type="id"/>
+    <item name="detail_text_view_flipper" type="id"/>
+    <item name="detail_title_text_view" type="id"/>
+    <item name="detail_text_text_view" type="id"/>
+    <item name="detail_layout_applied" type="id"/>
+    <item name="detail_text_view_num_applied" type="id"/>
+    <item name="detail_layout_joined" type="id"/>
+    <item name="detail_text_view_num_joined" type="id"/>
+    <item name="detail_text_view_start_time" type="id"/>
+    <item name="detail_text_view_sign_up_util" type="id"/>
+    <item name="detail_text_view_place" type="id"/>
+    <item name="detail_text_view_requirement" type="id"/>
+    <item name="detail_text_view_cost" type="id"/>
+    <item name="detail_image_view_starter" type="id"/>
+    <item name="detail_text_view_starter" type="id"/>
+    <item name="detail_text_view_ratio_title" type="id"/>
+    <item name="detail_text_view_ratio" type="id"/>
+    <item name="detail_button_wanna_join" type="id"/>
+    <item name="detail_layout_left_icons" type="id"/>
+    <item name="detail_layout_right_icons" type="id"/>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class DisplayEventsFragment extends BaseListFragment<DisplayEventsPresent
         displayItemEventRefreshLayout.setOnRefreshListener(() -> mPresenter.refreshTop());
         displayItemEventRecyclerView.setLayoutManager(mLayoutManager = new LinearLayoutManager(getContext()));
         displayItemEventRecyclerView.setAdapter(adapter = new DisplayEventsAdapter(this));
+        mPresenter.setAdapter(adapter);
         displayItemEventRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -74,7 +76,7 @@ public class DisplayEventsFragment extends BaseListFragment<DisplayEventsPresent
                 }
             }
         });
-
+        mPresenter.attachView(this);
     }
 
     @Override
@@ -82,9 +84,6 @@ public class DisplayEventsFragment extends BaseListFragment<DisplayEventsPresent
         return new DisplayEventsPresenter(this, this);
     }
 
-    public DisplayEventsAdapter getAdapter(){
-        return adapter;
-    }
 
     public void loading(boolean enable) {
         if (!enable) {

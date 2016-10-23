@@ -42,4 +42,46 @@
         <item name="android:textSize">@dimen/edit_text_login_text_size</item>
     </style>
 
+    <!--Detail page styles.-->
+    <style name="tagTextViewFlipperDetailStyle">
+        <item name="android:textSize">@dimen/detail_tag_text_size</item>
+        <item name="android:textColor">@color/white_text_tag</item>
+        <item name="android:background">@drawable/shape_text_of_image_bg</item>
+    </style>
+
+    <style name="titleTextViewDetailStyle">
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:textColor">@color/basic_orange</item>
+    </style>
+
+    <style name="textTextViewDetailStyle">
+        <item name="android:textSize">@dimen/detail_text_text_size</item>
+        <item name="android:textColor">@color/basic_text_black</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
+    </style>
+
+    <style name="smallTitleTextViewDetailStyle">
+        <item name="android:textSize">@dimen/detail_tag_text_size</item>
+        <item name="android:textColor">@color/grey_small_title</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="dataTextViewDetailStyle">
+        <item name="android:textSize">@dimen/detail_data_text_size</item>
+        <item name="android:textColor">@color/basic_orange</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="infoTextViewDetailStyle">
+        <item name="android:textSize">@dimen/detail_data_text_size</item>
+        <item name="android:textColor">@color/basic_text_black</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="wannaJoinButtonStyle">
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:background">@color/orange_button</item>
+        <item name="android:textColor">@color/white_text_tag</item>
+    </style>
+
 </resources>

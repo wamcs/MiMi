@@ -2,6 +2,7 @@ package com.unique.app.community.maindisplay.presenter;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.unique.app.community.base.recyclerView.BaseAdapter;
 import com.unique.app.community.base.recyclerView.BaseListPresenter;
@@ -28,10 +29,8 @@ public class DisplayEventsPresenter extends BaseListPresenter<DisplayEventsFragm
 
     private DisplayEventsAdapter adapter;
 
-    public DisplayEventsPresenter(Fragment fragment, RefreshListener listener) {
+    public DisplayEventsPresenter(DisplayEventsFragment fragment, RefreshListener listener) {
         super(fragment, listener);
-        adapter = mView.getAdapter();
-        init();
     }
 
     @Override
@@ -40,6 +39,7 @@ public class DisplayEventsPresenter extends BaseListPresenter<DisplayEventsFragm
             @Override
             public List<Event> call(Response<List<Event>> listResponse) {
                 if (listResponse.getCode() == Response.SUCCESS){
+                    Timber.d("get event success");
                     return listResponse.getData();
                 }else {
                     Timber.d("getting events failed.message is %s",listResponse.getMessage());
@@ -47,6 +47,12 @@ public class DisplayEventsPresenter extends BaseListPresenter<DisplayEventsFragm
                 }
             }
         });
+    }
+
+    @Override
+    public void attachView(DisplayEventsFragment view) {
+        super.attachView(view);
+        init();
     }
 
     private void init(){
@@ -68,5 +74,9 @@ public class DisplayEventsPresenter extends BaseListPresenter<DisplayEventsFragm
     @Override
     protected DisplayEventsAdapter getAdapter() {
         return adapter;
+    }
+
+    public void setAdapter(DisplayEventsAdapter adapter){
+        this.adapter = adapter;
     }
 }

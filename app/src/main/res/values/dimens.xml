@@ -50,5 +50,28 @@
     <dimen name="display_event_item_label_text_size">12sp</dimen>
     
     
+    <!--Detail activity dimens-->
+    <dimen name="detail_viewflipper_height">200dp</dimen>
+    <dimen name="detail_margin_thirty_vertical">15dp</dimen>
+    <dimen name="detail_margin_forty_vertical">20dp</dimen>
+    <dimen name="detail_margin_thirty_horizon">15dp</dimen>
+    <dimen name="detail_margin_fifty_horizon">25dp</dimen>
+    <dimen name="detail_margin_normal_horizon">12dp</dimen>
+    <dimen name="detail_margin_small_icon_horizon">3dp</dimen>
+    <dimen name="detail_margin_between_icon_text_horizon">10dp</dimen>
+    <dimen name="detail_padding_horizon_tag">10dp</dimen>
+    <dimen name="detail_padding_vertical_tag">5dp</dimen>
+    <dimen name="detail_button_height">48dp</dimen>
+    <dimen name="detail_title_text_size">18sp</dimen>
+    <dimen name="detail_text_text_size">14sp</dimen>
+    <dimen name="detail_tag_text_size">12sp</dimen>
+    <dimen name="detail_data_text_size">13sp</dimen>
+    <dimen name="detail_line_sqacing_extra">6sp</dimen>
+    <dimen name="detail_cut_line_height">30dp</dimen>
+    <dimen name="detail_cut_line_width">0.5dp</dimen>
+    <dimen name="detail_icon_diameter">22dp</dimen>
+    <dimen name="detail_icon_starter_diameter">32dp</dimen>
+    <dimen name="detail_icon_starter_title">11sp</dimen>
+    <dimen name="detail_icon_margin_bottom">1dp</dimen>
 
 </resources>

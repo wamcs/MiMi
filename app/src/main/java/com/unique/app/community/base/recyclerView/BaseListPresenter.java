@@ -3,13 +3,16 @@ package com.unique.app.community.base.recyclerView;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IView;
+import com.unique.app.community.net.Response;
 import com.unique.app.community.utils.NetworkUtil;
 import com.unique.app.community.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;

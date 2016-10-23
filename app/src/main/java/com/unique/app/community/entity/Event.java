@@ -1,6 +1,7 @@
 package com.unique.app.community.entity;
 
 import android.os.Parcel;
+import android.util.Log;
 
 import com.avos.avoscloud.AVClassName;
 import com.avos.avoscloud.AVException;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -196,11 +198,11 @@ public class Event extends AVObject {
     }
 
     public List<EventTag> getTags(){
-        if (tags == null) {
+        if (tags == null){
             AVRelation<EventTag> avRelation = getRelation(TAG);
             HttpApi.getRelativeEventTag(avRelation)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<Response<List<EventTag>>>() {
                         @Override
                         public void call(Response<List<EventTag>> listResponse) {
@@ -211,8 +213,8 @@ public class Event extends AVObject {
                             }
                         }
                     });
-        }
 
+        }
         return tags;
     }
 

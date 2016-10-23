@@ -38,6 +38,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:scaleType="centerInside"
+
             android:layout_height="match_parent"
             android:id="@id/page_1"/>
 
@@ -45,6 +47,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:scaleType="centerInside"
+
             android:layout_height="match_parent"
             android:id="@id/page_2"/>
 
@@ -52,6 +56,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:scaleType="centerInside"
+
             android:layout_height="match_parent"
             android:id="@id/page_3"/>
 

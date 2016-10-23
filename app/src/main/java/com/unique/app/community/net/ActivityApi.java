@@ -48,6 +48,7 @@ public class ActivityApi {
                 @Override
                 public void done(List<Event> list, AVException e) {
                     Response<List<Event>> response = new Response<List<Event>>();
+                    response.setData(list);
                     if (e != null){
                         response.setCode(e.getCode());
                         response.setMessage(e.getMessage());
@@ -69,6 +70,7 @@ public class ActivityApi {
                 @Override
                 public void done(List<EventTag> list, AVException e) {
                     Response<List<EventTag>> response = new Response<List<EventTag>>();
+                    response.setData(list);
                     if (e != null){
                         response.setCode(e.getCode());
                         response.setMessage(e.getMessage());
