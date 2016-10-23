@@ -7,8 +7,6 @@ import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
 
-import java.util.List;
-
 /**
  * Author: Wamcs
  * mail: kaili@hustunique.com

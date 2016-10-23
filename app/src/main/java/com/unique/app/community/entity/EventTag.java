@@ -1,7 +1,6 @@
 package com.unique.app.community.entity;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.avos.avoscloud.AVClassName;
 import com.avos.avoscloud.AVObject;

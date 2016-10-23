@@ -13,10 +13,10 @@
         android:paddingTop="@dimen/default_toolbar_imageview_padding"
         android:paddingBottom="@dimen/default_toolbar_imageview_padding"
         android:paddingRight="@dimen/default_toolbar_imageview_padding"
-        android:paddingLeft="@dimen/default_toolbar_imageview_padding_left"
+        android:paddingLeft="@dimen/default_toolbar_imageview_padding"
         android:textSize="@dimen/default_toolbar_textview_text_size"
         android:text="@string/back"
-        android:textColor="@color/black_text_login"
+        android:textColor="@color/basic_text_black"
         android:drawableStart="@drawable/ic_chevron_left_tool_bar"
         android:clickable="true"/>
 
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="@color/black_text_login"
+        android:textColor="@color/basic_text_black"
         android:padding="@dimen/default_toolbar_textview_padding"
         android:textSize="@dimen/default_toolbar_textview_text_size"/>
 

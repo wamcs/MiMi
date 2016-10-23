@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Community</string>
+    <string name="app_name">觅觅</string>
 
     <string name="no_network">当前没有网络</string>
     <string name="ensure">确定</string>
@@ -29,5 +29,8 @@
     <string name="error_user_code">验证码错误</string>
     <string name="error_user_phone">手机号格式错误</string>
     <string name="error_user_password">密码格式错误</string>
+    
+    <string name="display_show_events">花园</string>
+    <string name="display_classification">分类</string>
 
 </resources>

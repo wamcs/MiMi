@@ -7,15 +7,14 @@
 
 
     <!-- Default toolbar dimens-->
-    <dimen name="default_toolbar_imageview_padding">40px</dimen>
-    <dimen name="default_toolbar_imageview_padding_left">26px</dimen>
-    <dimen name="default_toolbar_textview_margin_left">39px</dimen>
+    <dimen name="default_toolbar_imageview_padding">10dp</dimen>
+    <dimen name="default_toolbar_imageview_padding_right">20dp</dimen>
     <dimen name="default_toolbar_textview_padding">13px</dimen>
     <dimen name="default_toolbar_textview_text_size">18sp</dimen>
     <dimen name="default_toolbar_textview_menu_text_size">18sp</dimen>
 
     <!--Default toolbar height-->
-    <dimen name="default_toolbar_height">147px</dimen>
+    <dimen name="default_toolbar_height">75dp</dimen>
 
 
     <!--MainActivity dimens-->
@@ -34,6 +33,9 @@
     <dimen name="base_line_login_height">0.5dp</dimen>
     <dimen name="edit_text_login_text_size">12sp</dimen>
     <dimen name="edit_text_login_height">12dp</dimen>
+
+    <!--displayFragment dimens-->
+    <dimen name="dispaly_indicator_line_height">2dp</dimen>
     
     <!--Detail activity dimens-->
     <dimen name="detail_viewflipper_height">200dp</dimen>

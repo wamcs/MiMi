@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="tool_bar" type="id"/>
-    <item name="default_tool_bar_imageview" type="id"/>
+    <item name="default_tool_bar_left_imageview" type="id"/>
     <item name="default_tool_bar_textview" type="id"/>
+    <item name="default_tool_bar_right_imageview" type="id"/>
 
 
     <!--mainActivity ids-->
@@ -40,10 +41,8 @@
     <item name="tool_bar_back_button" type="id"/>
     <item name="tool_bar_title_text_view" type="id"/>
 
-    <!--details activity-->
-    <item name="detail_view_flipper" type="id"/>
-    <item name="detail_text_view_flipper" type="id"/>
-    <item name="detail_title_text_view" type="id"/>
-
+    <!--displayFragment ids-->
+    <item name="display_tab_layout" type="id"/>
+    <item name="display_viewpager" type="id"/>
 
 </resources>
