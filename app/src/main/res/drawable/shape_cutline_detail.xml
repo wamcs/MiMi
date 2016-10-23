@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-</selector>
+    <size
+        android:width="@dimen/detail_cut_line_width"
+        android:height="@dimen/detail_cut_line_height"/>
+
+    <solid
+        android:color="@color/grey_baseline_and_button_login"/>
+
+</shape>
