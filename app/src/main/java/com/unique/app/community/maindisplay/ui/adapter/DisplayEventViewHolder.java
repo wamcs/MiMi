@@ -13,6 +13,8 @@ import com.unique.app.community.base.recyclerView.BaseViewHolder;
 import com.unique.app.community.entity.Event;
 import com.unique.app.community.entity.EventTag;
 import com.unique.app.community.maindisplay.ui.fragment.DisplayEventsFragment;
+import com.unique.app.community.net.HttpApi;
+import com.unique.app.community.net.Response;
 import com.unique.app.community.utils.Inflater;
 import com.unique.app.community.utils.TimeUtils;
 import com.unique.app.community.widget.CircularImageView;
@@ -24,7 +26,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
@@ -98,16 +103,34 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     }
 
     private void parseTags(Event event) {
-        ArrayList<String> tags = new ArrayList<>();
-        for (EventTag tag : event.getTags()) {
-            tags.add(tag.getTitle());
-        }
-        for (String tag : tags){
-            View view = Inflater.inflate(R.layout.item_display_event_tag,displayItemTagsContainer,false);
-            TextView text = (TextView) view.findViewById(R.id.display_item_event_tag);
-            text.setText(tag);
-            displayItemTagsContainer.addView(view);
-        }
+        HttpApi.getRelativeEventTag(event.getTags())
+                .map((Func1<Response<List<EventTag>>, List<EventTag>>) listResponse -> {
+                    if (listResponse.getCode() == Response.SUCCESS){
+                            return listResponse.getData();
+                        }else {
+                            Timber.d("getting relative tags failed.message is %s",listResponse.getMessage());
+                            return new ArrayList<>();
+                        }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(eventTags -> {
+                    ArrayList<String> tags = new ArrayList<>();
+
+                    for (EventTag tag :eventTags) {
+                        tags.add(tag.getTitle());
+                    }
+
+                    for (String tag : tags){
+                        View view = Inflater.inflate(R.layout.item_display_event_tag,displayItemTagsContainer,false);
+                        TextView text = (TextView) view.findViewById(R.id.display_item_event_tag);
+                        text.setText(tag);
+                        displayItemTagsContainer.addView(view);
+                    }
+                });
+
+
+
     }
 
     @OnClick(R.id.display_item_root)

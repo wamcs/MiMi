@@ -18,6 +18,7 @@ import java.util.List;
 
 import rx.Observable;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import timber.log.Timber;
 
 /**

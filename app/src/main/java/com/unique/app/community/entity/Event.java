@@ -16,6 +16,7 @@ import com.unique.app.community.net.Response;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -31,10 +32,6 @@ import timber.log.Timber;
 
 @AVClassName("Event")
 public class Event extends AVObject {
-
-    private List<User> participation;
-    private List<EventTag> tags;
-    private List<EventComment> comments;
 
     // 活动状态
     // 1-有效 0-无效
@@ -84,34 +81,12 @@ public class Event extends AVObject {
         addAll(IMAGE,images);
     }
 
-    public List<EventComment> getComments(){
-
-        if (comments == null) {
-            AVRelation<EventComment> avRelation = getRelation(COMMENTS);
-            HttpApi.getRelativeEventComment(avRelation)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
-                    .subscribe(new Action1<Response<List<EventComment>>>() {
-                        @Override
-                        public void call(Response<List<EventComment>> listResponse) {
-                            if (listResponse.getCode() == Response.SUCCESS){
-                                comments = listResponse.getData();
-                            }else {
-                                Timber.d("getting relative comments failed.message is %s",listResponse.getMessage());
-                            }
-                        }
-                    });
-        }
-
-        return comments;
+    public AVRelation<EventComment> getComments(){
+        return getRelation(COMMENTS);
     }
 
     public void setComments(EventComment comment){
-        AVRelation<EventComment> avRelation = new AVRelation<>();
-        if (comments == null){
-            comments = getComments();
-        }
-        avRelation.addAll(comments);
+        AVRelation<EventComment> avRelation = getComments();
         avRelation.add(comment);
         put(COMMENTS,avRelation);
 
@@ -165,65 +140,22 @@ public class Event extends AVObject {
         put(TYPE,type);
     }
 
-    public List<User> getParticipation(){
-
-        if (participation == null) {
-            AVRelation<User> avRelation = getRelation(PARTICIPATION);
-            HttpApi.getRelativeUser(avRelation)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
-                    .subscribe(new Action1<Response<List<User>>>() {
-                        @Override
-                        public void call(Response<List<User>> listResponse) {
-                            if (listResponse.getCode() == Response.SUCCESS){
-                                participation = listResponse.getData();
-                            }else {
-                                Timber.d("getting relative user failed.message is %s",listResponse.getMessage());
-                            }
-                        }
-                    });
-        }
-
-        return participation;
+    public AVRelation<User> getParticipation(){
+        return getRelation(PARTICIPATION);
     }
 
     public void setParticipation(User user){
-        AVRelation<User> avRelation = new AVRelation<>();
-        if (participation == null){
-            participation = getParticipation();
-        }
-        avRelation.addAll(participation);
+        AVRelation<User> avRelation = getParticipation();
         avRelation.add(user);
         put(PARTICIPATION,avRelation);
     }
 
-    public List<EventTag> getTags(){
-        if (tags == null){
-            AVRelation<EventTag> avRelation = getRelation(TAG);
-            HttpApi.getRelativeEventTag(avRelation)
-                    .subscribeOn(AndroidSchedulers.mainThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<Response<List<EventTag>>>() {
-                        @Override
-                        public void call(Response<List<EventTag>> listResponse) {
-                            if (listResponse.getCode() == Response.SUCCESS){
-                                tags = listResponse.getData();
-                            }else {
-                                Timber.d("getting relative tags failed.message is %s",listResponse.getMessage());
-                            }
-                        }
-                    });
-
-        }
-        return tags;
+    public AVRelation<EventTag> getTags(){
+        return getRelation(TAG);
     }
 
     public void setTags(List<EventTag> tagList){
-        AVRelation<EventTag> avRelation = new AVRelation<>();
-        if (tags == null){
-            tags = getTags();
-        }
-        avRelation.addAll(tags);
+        AVRelation<EventTag> avRelation = getTags();
         avRelation.addAll(tagList);
         put(TAG,avRelation);
     }
