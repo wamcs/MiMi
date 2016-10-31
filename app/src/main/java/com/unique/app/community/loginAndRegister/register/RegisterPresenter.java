@@ -1,21 +1,14 @@
 package com.unique.app.community.loginAndRegister.register;
 
-import android.app.Activity;
 import android.os.CountDownTimer;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IPresenter;
-import com.unique.app.community.global.conf;
 import com.unique.app.community.utils.ToastUtil;
-
-import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Author: Alexander

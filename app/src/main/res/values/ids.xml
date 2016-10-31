@@ -80,4 +80,26 @@
     <item name="detail_button_wanna_join" type="id"/>
     <item name="detail_layout_left_icons" type="id"/>
     <item name="detail_layout_right_icons" type="id"/>
+
+    <!--datePickDialog ids-->
+    <item name="date_pick_dialog_close_button" type="id"/>
+    <item name="date_pick_dialog_finish_button" type="id"/>
+    <item name="date_pick_dialog_title_text_view" type="id"/>
+    <item name="date_pick_dialog_show_date_text_view" type="id"/>
+    <item name="date_pick_dialog_show_time_text_view" type="id"/>
+    <item name="date_pick_dialog_year_picker" type="id"/>
+    <item name="date_pick_dialog_month_picker" type="id"/>
+    <item name="date_pick_dialog_date_picker" type="id"/>
+    <item name="date_pick_dialog_hour_picker" type="id"/>
+    <item name="date_pick_dialog_min_picker" type="id"/>
+
+    <!--imageChooseDialog ids-->
+    <item name="image_choose_dialog_system_gallery" type="id"/>
+    <item name="image_choose_dialog_take_phone" type="id"/>
+    <item name="image_choose_dialog_phone_album" type="id"/>
+    <item name="image_choose_dialog_canal" type="id"/>
+
+    <!--postEvent ids-->
+    <item name="post_event_activity_bottom_button" type="id"/>
+
 </resources>

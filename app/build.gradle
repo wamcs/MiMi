@@ -57,6 +57,8 @@ dependencies {
 
     compile 'io.reactivex:rxandroid:1.2.0'
 
+    compile 'cn.carbswang.android:NumberPickerView:1.1.1'
+
     // LeanCloud 基础包
     compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
 

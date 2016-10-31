@@ -1,5 +1,6 @@
 package com.unique.app.community.base.Mvp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,6 +26,12 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment {
     public void onAttach(Context context) {
         mContext = context;
         super.onAttach(context);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        mContext = activity;
+        super.onAttach(activity);
     }
 
     @Nullable

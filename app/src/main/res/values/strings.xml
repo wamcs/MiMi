@@ -49,4 +49,19 @@
     <string name="ratio_of_like">好评度</string>
     <string name="wanna_join">我要加入</string>
 
+    <!--DatePickDialog Strings-->
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+
+    <!--ImageChooseDialog Strings-->
+    <string name="gallery">系统图库</string>
+    <string name="take_photo">拍照</string>
+    <string name="phone_album">手机相册</string>
+
+    <!--postEventActivity Strings-->
+    <string name="post">发布</string>
+
 </resources>

@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVFile;
 import com.bumptech.glide.Glide;
 import com.unique.app.community.R;
 import com.unique.app.community.base.recyclerView.BaseViewHolder;
@@ -25,9 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -98,8 +95,8 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     private void parseText(Event event) {
         displayItemPositionText.setText(event.getPlace());
         //displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getParticipation().size(), event.getExcepted()));
-        displayItemActivityTimeText.setText(TimeUtils.parseTime(event.getTime()));
-        displayItemReleaseTimeText.setText(TimeUtils.parseTime(event.getCreatedAt()));
+        displayItemActivityTimeText.setText(TimeUtils.parseDate(event.getTime()));
+        displayItemReleaseTimeText.setText(TimeUtils.parseDate(event.getCreatedAt()));
     }
 
     private void parseTags(Event event) {

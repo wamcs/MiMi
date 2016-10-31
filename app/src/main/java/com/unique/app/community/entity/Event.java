@@ -64,21 +64,30 @@ public class Event extends AVObject {
     //发起人
     private static final String SPONSOR = "sponsor";
 
-    public ArrayList<String> getImage(){
-        ArrayList<String> urls = new ArrayList<>();
-        ArrayList arrayList = (ArrayList) get(IMAGE);
-        if (arrayList == null || arrayList.size() == 0){
-            Timber.d("no image error");
-        }else {
-            for (Object file : arrayList){
-                urls.add(((AVFile)file).getUrl());
-            }
-        }
-        return urls;
+    private static final String PARITCIPANTSCOUNT = "ParitcipantsCount";
+
+    public int getCount() {
+        return getInt(PARITCIPANTSCOUNT);
     }
 
-    public void setImage(List<AVFile> images){
-        addAll(IMAGE,images);
+    public void addCount(){
+        put(PARITCIPANTSCOUNT,getCount()+1);
+    }
+
+    public void reduceCount(){
+        if (getCount() == 0){
+            return;
+        }
+        put(PARITCIPANTSCOUNT,getCount()-1);
+    }
+
+    public String getImage(){
+        AVFile img = getAVFile(IMAGE);
+        return img.getUrl();
+    }
+
+    public void setImage(AVFile image){
+        put(IMAGE,image);
     }
 
     public AVRelation<EventComment> getComments(){
