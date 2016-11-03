@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:circular="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,7 +24,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/detail_button_height"
             android:gravity="center_horizontal">
 
             <RelativeLayout
@@ -303,7 +302,7 @@
                     android:id="@id/detail_image_view_starter"
                     android:layout_width="@dimen/detail_icon_starter_diameter"
                     android:layout_height="@dimen/detail_icon_starter_diameter"
-                    circular:civ_border="false"/>
+                    custom:civ_border="false"/>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -353,6 +352,57 @@
 
             </RelativeLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_margin_twenty_vertical"
+                android:background="@color/grey_background"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@id/detail_tab_layout_widget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:tabTextAppearance="@style/tabCommentTextViewAppearance"
+                custom:tabIndicatorHeight="@dimen/detail_tag_indicator_height"
+                custom:tabIndicatorColor="@color/basic_orange"
+                custom:tabTextColor="@color/grey_small_title"
+                custom:tabSelectedTextColor="@color/basic_orange"
+                custom:tabPaddingTop="@dimen/detail_margin_thirty_vertical"
+                custom:tabPaddingBottom="@dimen/detail_margin_thirty_vertical">
+
+                <android.support.design.widget.TabItem
+                    android:tag="@string/ask_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/ask_question"/>
+
+                <android.support.design.widget.TabItem
+                    android:tag="@string/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/comment"/>
+
+            </android.support.design.widget.TabLayout>
+
+            <EditText
+                style="@style/askQuestionDetailHint"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_ask_background_height"
+                android:hint="@string/wanna_ask_sth"
+                android:background="@drawable/shape_ask_question_background"
+                android:maxLines="1"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
+                android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
+                android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
+                android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"/>
+
+            <LinearLayout
+                android:id="@id/detail_layout_fragment"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </ScrollView>
@@ -363,7 +413,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_button_height"
         android:layout_alignParentBottom="true"
-        android:text="@string/wanna_join" />
+        android:text="@string/wanna_join"
+        android:visibility="gone"/>
 
 </RelativeLayout>
 

@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -78,6 +79,8 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     ViewFlipper picFlipper;
     @BindView(R.id.detail_button_wanna_join)
     Button wannaJoin;
+    @BindView(R.id.detail_tab_layout_widget)
+    TabLayout tabLayout;
 
     private int numLeftIcons = 0;
     private int numRightIcons = 0;
@@ -93,6 +96,10 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     @Override
     protected int getLayout() {
         return R.layout.activity_detail;
+    }
+
+    public DetailPresenter getMPresent(){
+        return mPresenter;
     }
 
     @Override
@@ -144,8 +151,6 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     public boolean dispatchTouchEvent(MotionEvent event){
         if(event.getY() < getResources().getDimension(R.dimen.detail_viewflipper_height) + 50) {
             super.dispatchTouchEvent(event);
-            picFlipper.setAutoStart(false);
-            picFlipper.stopFlipping();
             return flipperGesture.onTouchEvent(event);
         }
         return super.dispatchTouchEvent(event);
@@ -193,6 +198,8 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         @Override
         public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
             if (motionEvent != null && motionEvent1 != null) {
+                picFlipper.setAutoStart(false);
+                picFlipper.stopFlipping();
                 if (Math.abs(motionEvent.getX() - motionEvent1.getX()) < slop) {
                     return false;
                 } else if (motionEvent.getX() > motionEvent1.getX()) {
@@ -238,6 +245,29 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         picFlipper.setInAnimation(rightInAnim);
         picFlipper.setOutAnimation(mContext, R.anim.flipper_slide_out_left);
         picFlipper.startFlipping();
+    }
+
+    /**
+     * Initial tab layout
+     */
+
+    private void initialTabLayout(){
+       tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+           @Override
+           public void onTabSelected(TabLayout.Tab tab) {
+
+           }
+
+           @Override
+           public void onTabUnselected(TabLayout.Tab tab) {
+
+           }
+
+           @Override
+           public void onTabReselected(TabLayout.Tab tab) {
+
+           }
+       });
     }
 
     /**
