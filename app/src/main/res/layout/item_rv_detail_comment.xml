@@ -58,14 +58,28 @@
                 android:layout_marginTop="@dimen/detail_fra_margin_ten"
                 android:text="今天 20:20"/>
 
-            <TextView
-                style="@style/infoTextViewDetailStyle"
-                android:id="@id/detail_fra_text_view_text_comment"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="好棒呀，摄影大大带我飞"
-                android:layout_marginTop="@dimen/detail_margin_twenty_vertical"
-                android:layout_marginEnd="@dimen/detail_margin_forty_vertical"/>
+                android:layout_marginTop="@dimen/detail_margin_twenty_vertical">
+
+                <TextView
+                    style="@style/infoTextViewDetailStyle"
+                    android:id="@id/detail_fra_text_view_text_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="好棒呀，摄影大大带我飞" />
+
+                <TextView
+                    style="@style/smallTitleTextViewDetailStyle"
+                    android:id="@id/detail_fra_text_view_reply_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reply"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 

@@ -45,7 +45,7 @@
     <dimen name="detail_margin_thirty_horizon">15dp</dimen>
     <dimen name="detail_margin_fifty_horizon">25dp</dimen>
     <dimen name="detail_margin_normal_horizon">12dp</dimen>
-    <dimen name="detail_margin_small_icon_horizon">3dp</dimen>
+    <dimen name="detail_margin_small_icon_horizon">2dp</dimen>
     <dimen name="detail_margin_between_icon_text_horizon">10dp</dimen>
     <dimen name="detail_padding_horizon_tag">10dp</dimen>
     <dimen name="detail_padding_vertical_tag">5dp</dimen>

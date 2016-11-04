@@ -49,7 +49,6 @@
                 android:id="@id/detail_fra_text_view_question_ask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="楼主大几呀？是专业摄影师吗？"
                 android:layout_marginTop="@dimen/detail_margin_twenty_vertical"/>
 
         </LinearLayout>
@@ -62,7 +61,6 @@
             android:layout_below="@id/detail_fra_temp_linerlayout"
             android:layout_alignStart="@id/detail_fra_temp_linerlayout"
             android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
-            android:text="大三，算不上专业，大学期间一直都在玩摄影，技术也学了不少"
             android:textColor="@color/grey_small_title"/>
         
         <ImageView

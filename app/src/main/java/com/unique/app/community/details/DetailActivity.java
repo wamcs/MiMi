@@ -1,20 +1,31 @@
 package com.unique.app.community.details;
 
+import android.app.FragmentManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,8 +36,14 @@ import android.widget.ViewFlipper;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.base.Mvp.IView;
+import com.unique.app.community.details.AskFragment.DetailAskFragment;
+import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
+import com.unique.app.community.details.Widget.KeyboardListenerLayout;
+import com.unique.app.community.utils.ToastUtil;
 import com.unique.app.community.widget.CircularImageView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -43,6 +60,10 @@ import static com.unique.app.community.global.AppData.getContext;
 public class DetailActivity extends BaseActivity<DetailPresenter>
         implements IView {
 
+    @BindView(R.id.tool_bar)
+    Toolbar toolbar;
+    @BindView(R.id.detail_layout)
+    KeyboardListenerLayout layout;
     @BindView(R.id.detail_scroll_layout)
     ScrollView scrollView;
     @BindView(R.id.detail_text_view_flipper)
@@ -81,12 +102,21 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     Button wannaJoin;
     @BindView(R.id.detail_tab_layout_widget)
     TabLayout tabLayout;
+    @BindView(R.id.detail_view_pager_fragment)
+    ViewPager viewPager;
+    @BindView(R.id.detail_layout_reply)
+    LinearLayout replyLayout;
+    @BindView(R.id.detail_edit_text_reply)
+    EditText replyEditText;
 
     private int numLeftIcons = 0;
     private int numRightIcons = 0;
     private Handler animHolder;
     private int numFlipper = 0;
     private float slop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+
+    private ArrayList<Fragment> frags;
+    private int whoReply = -1;
 
     @Override
     protected DetailPresenter getPresenter() {
@@ -104,8 +134,10 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
 
     @Override
     protected void initEventAndData() {
-        initialFlipper();
         mPresenter.attachView(this);
+        initialFlipper();
+        initialTab();
+        initialKeyboardListener();
         test();
     }
 
@@ -138,6 +170,32 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     @OnClick(R.id.detail_button_wanna_join)
     void wannaJoin(){
         mPresenter.iWannaJoin();
+    }
+
+    /**
+     *  Initial keyboard listener
+     */
+
+    private void initialKeyboardListener(){
+        layout.setOnSizeChangeListener(new KeyboardListenerLayout.OnSizeChangeListener() {
+            @Override
+            public void onSizeChange(int w, int h, int oldW, int oldH) {
+                if (oldH > h) {
+                    wannaJoin.setVisibility(View.GONE);
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            replyEditText.setVisibility(View.GONE);
+                            replyLayout.setVisibility(View.GONE);
+                            wannaJoin.setVisibility(View.VISIBLE);
+                            wannaJoin.requestFocus();
+                        }
+                    }, 100);
+                    whoReply = -1;
+                }
+            }
+        });
     }
 
     /**
@@ -251,23 +309,19 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
      * Initial tab layout
      */
 
-    private void initialTabLayout(){
-       tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-           @Override
-           public void onTabSelected(TabLayout.Tab tab) {
-
-           }
-
-           @Override
-           public void onTabUnselected(TabLayout.Tab tab) {
-
-           }
-
-           @Override
-           public void onTabReselected(TabLayout.Tab tab) {
-
-           }
-       });
+    private void initialTab(){
+        frags = new ArrayList<>();
+        frags.add(mPresenter.getAskFragment());
+        frags.add(mPresenter.getCommentFragment());
+        viewPager.setAdapter(new DetailPageViewAdapter(getSupportFragmentManager(), frags));
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View page, float position) {
+                viewPager.requestLayout();
+            }
+        });
     }
 
     /**
@@ -349,6 +403,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
             iconLayout.width = (int) diameter;
             iconLayout.setMarginStart((int) getResources().getDimension(R.dimen.detail_margin_small_icon_horizon));
             CircularImageView icon = getIcons(head);
+            icon.setBorderWidth(0);
             icon.setLayoutParams(iconLayout);
             leftIcons.addView(icon, numLeftIcons - 1);
         }else{
@@ -368,6 +423,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
             iconLayout.width = (int) diameter;
             iconLayout.setMarginEnd((int) getResources().getDimension(R.dimen.detail_margin_small_icon_horizon));
             CircularImageView icon = getIcons(head);
+            icon.setBorderWidth(0);
             icon.setLayoutParams(iconLayout);
             rightIcons.addView(icon, numRightIcons - 1);
         }else{
@@ -387,4 +443,29 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         return icon;
     }
 
+    /**
+     * Reply Edit text
+     */
+
+    public void reply(int who){
+        whoReply = who;
+        replyEditText.setText("");
+        replyEditText.setVisibility(View.VISIBLE);
+        replyLayout.setVisibility(View.VISIBLE);
+        replyEditText.requestFocus();
+        InputMethodManager inputManager =
+                (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.showSoftInput(replyEditText, InputMethod.SHOW_FORCED);
+        replyEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEND
+                        || (keyEvent != null && keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    mPresenter.replyToWho(who);
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 }

@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <EditText
+        style="@style/askQuestionDetailHint"
+        android:id="@id/detail_ask_comment_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_ask_background_height"
+        android:background="@drawable/shape_ask_question_background"
+        android:maxLines="1"
+        android:imeOptions="actionSend"
+        android:inputType="text"
+        android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
+        android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
+        android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
+        android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@id/detail_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/smallTitleTextViewDetailStyle"
+        android:id="@id/detail_text_view_read_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
+        android:layout_marginBottom="@dimen/detail_margin_forty_vertical"
+        android:text="查看更多"
+        android:clickable="true" />
+
 
 </LinearLayout>

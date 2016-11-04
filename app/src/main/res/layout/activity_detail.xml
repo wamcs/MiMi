@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.unique.app.community.details.Widget.KeyboardListenerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@id/detail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -88,7 +90,7 @@
                         android:orientation="horizontal"
                         android:layout_marginBottom="@dimen/detail_icon_margin_bottom"
                         android:layout_marginEnd="@dimen/detail_margin_between_icon_text_horizon">
-
+                        
                     </LinearLayout>
 
                     <LinearLayout
@@ -376,6 +378,7 @@
                     android:text="@string/ask_question"/>
 
                 <android.support.design.widget.TabItem
+                    android:id="@id/detail_tab_comment_tab"
                     android:tag="@string/comment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -383,25 +386,11 @@
 
             </android.support.design.widget.TabLayout>
 
-            <EditText
-                style="@style/askQuestionDetailHint"
+            <com.unique.app.community.details.Widget.ViewPagerInScrollView
+                android:id="@id/detail_view_pager_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/detail_ask_background_height"
-                android:hint="@string/wanna_ask_sth"
-                android:background="@drawable/shape_ask_question_background"
-                android:maxLines="1"
-                android:imeOptions="actionSend"
-                android:inputType="text"
-                android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
-                android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
-                android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
-                android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"/>
-
-            <LinearLayout
-                android:id="@id/detail_layout_fragment"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/detail_button_height"/>
 
         </LinearLayout>
 
@@ -412,9 +401,36 @@
         android:id="@id/detail_button_wanna_join"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_button_height"
-        android:layout_alignParentBottom="true"
         android:text="@string/wanna_join"
+        android:layout_alignParentBottom="true"
         android:visibility="gone"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@id/detail_layout_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/grey_small_title"
+        android:visibility="gone">
+
+        <EditText
+            style="@style/askQuestionDetailHint"
+            android:id="@id/detail_edit_text_reply"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_ask_background_height"
+            android:background="@drawable/shape_ask_question_background"
+            android:maxLines="1"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
+            android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
+            android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
+            android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+
+</com.unique.app.community.details.Widget.KeyboardListenerLayout>
 
