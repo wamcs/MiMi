@@ -33,6 +33,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
     private static final int INIT_PAGE = 1;
     private boolean isRefreshing = false;
 
+    protected static final int ITEM_NUMBER = 10;
     private RefreshListener listener;
 
     public BaseListPresenter(AppCompatActivity activity, RefreshListener listener) {

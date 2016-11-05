@@ -59,7 +59,7 @@ public class OtherApi {
 
     public Observable<Response<List<EventComment>>> getRelativeEventsCommentsInner(AVRelation<EventComment> avRelation){
         return Observable.create(subscriber -> {
-            avRelation.getQuery().findInBackground(new FindCallback<EventComment>() {
+            avRelation.getQuery().orderByDescending("createdAt").findInBackground(new FindCallback<EventComment>() {
                 @Override
                 public void done(List<EventComment> list, AVException e) {
                     Response<List<EventComment>> response = new Response<>();

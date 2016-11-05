@@ -48,6 +48,12 @@
     <string name="starter">发起者</string>
     <string name="ratio_of_like">好评度</string>
     <string name="wanna_join">我要加入</string>
+    <string name="ask_question">提问</string>
+    <string name="comment">评论</string>
+    <string name="joiner">参与者</string>
+    <string name="reply">回复</string>
+    <string name="wanna_comment_sth">说点什么？</string>
+    <string name="wanna_ask_sth">向发起者提问？</string>
 
     <!--DatePickDialog Strings-->
     <string name="year">年</string>
@@ -63,5 +69,7 @@
 
     <!--postEventActivity Strings-->
     <string name="post">发布</string>
+
+
 
 </resources>

@@ -1,5 +1,7 @@
 package com.unique.app.community.maindisplay.ui.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,8 +11,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.unique.app.community.R;
 import com.unique.app.community.base.recyclerView.BaseViewHolder;
+import com.unique.app.community.details.DetailActivity;
 import com.unique.app.community.entity.Event;
 import com.unique.app.community.entity.EventTag;
+import com.unique.app.community.global.Conf;
 import com.unique.app.community.maindisplay.ui.fragment.DisplayEventsFragment;
 import com.unique.app.community.net.HttpApi;
 import com.unique.app.community.net.Response;
@@ -54,6 +58,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     TextView displayItemReleaseTimeText;
 
     private DisplayEventsFragment fragment;
+    private Event event;
 
     public DisplayEventViewHolder(ViewGroup parent, DisplayEventsFragment fragment) {
         super(parent, R.layout.item_display_events);
@@ -64,6 +69,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
 
     @Override
     public void bindData(Event data) {
+        event = data;
         parseImage(data);
         parseTitle(data);
         parseSponsorImage(data);
@@ -76,10 +82,10 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     }
 
     private void parseImage(Event event) {
-        if (event.getImage().size() == 0){
+        if (event.getImage() == null){
             return;
         }
-        Glide.with(fragment).load(event.getImage().get(0))
+        Glide.with(fragment).load(event.getImage())
                 .error(R.mipmap.need_to_remove)
                 .into(displayItemImage);
     }
@@ -133,6 +139,9 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     @OnClick(R.id.display_item_root)
     void item_root(){
         //TODO:进入event展示界面
+        Intent intent = new Intent(fragment.getContext(), DetailActivity.class);
+        intent.putExtra(Conf.EVENT_DATA,event);
+        fragment.startActivity(intent);
     }
 
 

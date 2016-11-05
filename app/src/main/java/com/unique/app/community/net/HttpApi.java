@@ -58,6 +58,10 @@ public class HttpApi {
         return ActivityApi.getInstant().postEvent(event);
     }
 
+    public static Observable<Response<Void>> postEventComment(EventComment eventComment){
+        return ActivityApi.getInstant().postEventComment(eventComment);
+    }
+
     public static Observable<Response<List<EventTag>>> getRelativeEventTag(AVRelation<EventTag> avRelation){
         return OtherApi.getInstant().getRelativeEventsTagInner(avRelation);
     }

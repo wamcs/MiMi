@@ -1,10 +1,18 @@
 package com.unique.app.community.details;
 
 import android.graphics.Bitmap;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IPresenter;
+import com.unique.app.community.details.AskFragment.DetailAskFragment;
+import com.unique.app.community.details.AskFragment.DetailAskPresenter;
+import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
+import com.unique.app.community.details.CommentFragment.DetailCommentPresenter;
+import com.unique.app.community.entity.Event;
 import com.unique.app.community.utils.ToastUtil;
 
 /**
@@ -16,13 +24,41 @@ import com.unique.app.community.utils.ToastUtil;
 public class DetailPresenter extends BasePresenter<DetailActivity>
         implements IPresenter<DetailActivity> {
 
+    private Event event;
+
+    private FragmentManager fragmentManager;
+    private DetailAskFragment askFragment;
+    private DetailCommentFragment commentFragment;
+
+    private DetailAskPresenter askPresenter;
+    private DetailCommentPresenter commentPresenter;
+
     public DetailPresenter(AppCompatActivity activity) {
         super(activity);
+        initialFrags();
+    }
+
+    public void getData(Event event){
+        this.event = event;
+    }
+
+    public void initialFrags(){
+        fragmentManager = mActivity.getSupportFragmentManager();
+        askFragment = new DetailAskFragment();
+        commentFragment = new DetailCommentFragment();
+        askPresenter = new DetailAskPresenter(askFragment, askFragment);
+        commentPresenter = new DetailCommentPresenter(commentFragment, commentFragment,event);
     }
 
     public void iWannaJoin(){
         ToastUtil.TextToast("I wanna join!");
         // TODO: 16/10/23
+    }
+    
+    public void replyToWho(int who){
+        String name = getCommentPresenter().getAdapter().getData().get(who).getSender().getNickname();
+        ToastUtil.TextToast("I reply to " + who + " " + name);
+        // TODO: 16/11/5  
     }
 
     public void setMainTitle(String title){
@@ -75,5 +111,25 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
 
     public void addPicToJoinedIcons(Bitmap icon){
         ((DetailActivity)mView).addPicToJoinedIcons(icon);
+    }
+
+    public DetailCommentPresenter getCommentPresenter(){
+        return commentPresenter;
+    }
+
+    public DetailAskPresenter getAskPresenter(){
+        return askPresenter;
+    }
+
+    public DetailAskFragment getAskFragment(){
+        return askFragment;
+    }
+
+    public DetailCommentFragment getCommentFragment(){
+        return commentFragment;
+    }
+
+    public FragmentManager getFragmentManager(){
+        return fragmentManager;
     }
 }

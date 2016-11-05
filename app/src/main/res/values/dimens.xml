@@ -48,16 +48,17 @@
     <dimen name="display_event_item_title_text_size">17sp</dimen>
     <dimen name="display_event_item_info_text_size">13sp</dimen>
     <dimen name="display_event_item_label_text_size">12sp</dimen>
-    
+
     
     <!--Detail activity dimens-->
     <dimen name="detail_viewflipper_height">200dp</dimen>
+    <dimen name="detail_margin_twenty_vertical">10dp</dimen>
     <dimen name="detail_margin_thirty_vertical">15dp</dimen>
     <dimen name="detail_margin_forty_vertical">20dp</dimen>
     <dimen name="detail_margin_thirty_horizon">15dp</dimen>
     <dimen name="detail_margin_fifty_horizon">25dp</dimen>
     <dimen name="detail_margin_normal_horizon">12dp</dimen>
-    <dimen name="detail_margin_small_icon_horizon">3dp</dimen>
+    <dimen name="detail_margin_small_icon_horizon">2dp</dimen>
     <dimen name="detail_margin_between_icon_text_horizon">10dp</dimen>
     <dimen name="detail_padding_horizon_tag">10dp</dimen>
     <dimen name="detail_padding_vertical_tag">5dp</dimen>
@@ -73,7 +74,19 @@
     <dimen name="detail_icon_starter_diameter">32dp</dimen>
     <dimen name="detail_icon_starter_title">11sp</dimen>
     <dimen name="detail_icon_margin_bottom">1dp</dimen>
-    
+    <dimen name="detail_tab_height">43dp</dimen>
+    <dimen name="detail_tag_indicator_height">2dp</dimen>
+    <dimen name="detail_ask_background_stroke">0.8dp</dimen>
+    <dimen name="detail_ask_background_length">310dp</dimen>
+    <dimen name="detail_ask_background_height">30dp</dimen>
+    <dimen name="detail_ask_background_radius">4dp</dimen>
+    <dimen name="detail_ask_background_padding">10dp</dimen>
+    <dimen name="detail_fra_margin_forty">20dp</dimen>
+    <dimen name="detail_fra_margin_thirty_six">18dp</dimen>
+    <dimen name="detail_fra_margin_ten">5dp</dimen>
+    <dimen name="detail_fra_join_text_size">10sp</dimen>
+    <dimen name="detail_fra_small_icon_diameter">15dp</dimen>
+
     <!--DatePickDialog dimens-->
     <dimen name="date_pick_dialog_margin">15dp</dimen>
     <dimen name="data_pick_dialog_show_bar_height">70dp</dimen>
@@ -89,6 +102,5 @@
 
     <!--PostEvent dimens-->
     <dimen name="post_event_bottom_button">50dp</dimen>
-
 
 </resources>

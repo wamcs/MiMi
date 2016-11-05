@@ -5,6 +5,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.unique.app.community.entity.Event;
+import com.unique.app.community.entity.EventComment;
 import com.unique.app.community.entity.EventTag;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class ActivityApi {
             AVQuery<Event> avQuery = new AVQuery<>(EVENT);
             avQuery.limit(ITEM_NUMBER);
             avQuery.skip((page-1)*ITEM_NUMBER);
-            avQuery.orderByAscending("createdAt");
+            avQuery.orderByDescending("createdAt");
             avQuery.findInBackground(new FindCallback<Event>() {
                 @Override
                 public void done(List<Event> list, AVException e) {
@@ -88,6 +89,26 @@ public class ActivityApi {
     public Observable<Response<Void>> postEvent(Event event){
         return Observable.create(subscriber -> {
             event.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    Response<Void> response = new Response<Void>();
+                    if (e != null){
+                        response.setCode(e.getCode());
+                        response.setMessage(e.getMessage());
+                        subscriber.onNext(response);
+                        subscriber.onError(e.getCause());
+                    }else {
+                        subscriber.onNext(response);
+                        subscriber.onCompleted();
+                    }
+                }
+            });
+        });
+    }
+
+    public Observable<Response<Void>> postEventComment(EventComment eventComment){
+        return Observable.create(subscriber -> {
+            eventComment.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(AVException e) {
                     Response<Void> response = new Response<Void>();

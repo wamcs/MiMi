@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/detail_margin_thirty_horizon"
+    android:layout_marginStart="@dimen/detail_margin_thirty_vertical"
+    android:layout_marginEnd="@dimen/detail_margin_thirty_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/detail_fra_layout_ask_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_margin_twenty_vertical">
+
+        <com.unique.app.community.widget.CircularImageView
+            android:id="@id/detail_fra_icon_ask"
+            android:layout_width="@dimen/detail_icon_starter_diameter"
+            android:layout_height="@dimen/detail_icon_starter_diameter"
+            android:src="@mipmap/ic_launcher"
+            local:civ_border="false"/>
+
+        <LinearLayout
+            android:id="@+id/detail_fra_temp_linerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/detail_fra_margin_thirty_six"
+            android:layout_toEndOf="@id/detail_fra_icon_ask">
+
+            <TextView
+                style="@style/smallTitleTextViewDetailStyle"
+                android:id="@id/detail_fra_text_view_name_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/detail_tag_text_size"
+                android:text="小黄人"/>
+
+            <TextView
+                style="@style/commentTimeTextView"
+                android:id="@id/detail_fra_text_view_time_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/detail_fra_join_text_size"
+                android:layout_marginTop="@dimen/detail_fra_margin_ten"
+                android:text="今天 20:20"/>
+
+            <TextView
+                style="@style/infoTextViewDetailStyle"
+                android:id="@id/detail_fra_text_view_question_ask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_margin_twenty_vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/infoTextViewDetailStyle"
+            android:id="@id/detail_fra_text_view_answer_ask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_fra_temp_linerlayout"
+            android:layout_alignStart="@id/detail_fra_temp_linerlayout"
+            android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
+            android:textColor="@color/grey_small_title"/>
+        
+        <ImageView
+            android:id="@id/detail_fra_image_light_ask"
+            android:layout_width="@dimen/detail_fra_small_icon_diameter"
+            android:layout_height="@dimen/detail_fra_small_icon_diameter"
+            android:src="@mipmap/ic_launcher"
+            android:layout_toStartOf="@id/detail_fra_text_view_answer_ask"
+            android:layout_alignTop="@id/detail_fra_text_view_answer_ask"
+            android:layout_marginEnd="@dimen/detail_margin_twenty_vertical"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_line_login_height"
+        android:background="@color/grey_baseline_and_button_login"
+        android:layout_below="@id/detail_fra_layout_ask_one"
+        android:layout_marginTop="@dimen/detail_margin_thirty_vertical"/>
+
+</RelativeLayout>

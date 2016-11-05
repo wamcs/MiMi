@@ -36,5 +36,9 @@ public final class Conf {
     public static final int FEB_BIG_MONTH_MAX_DAY = 29;
     public static final int FEB_SMALL_MONTH_MAX_DAY = 28;
 
+    /**
+     * detail event tags
+     */
 
+    public static final String EVENT_DATA = "event_data";
 }
