@@ -52,6 +52,7 @@
     <style name="titleTextViewDetailStyle">
         <item name="android:textSize">@dimen/detail_title_text_size</item>
         <item name="android:textColor">@color/basic_orange</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
     </style>
 
     <style name="textTextViewDetailStyle">
@@ -64,24 +65,53 @@
         <item name="android:textSize">@dimen/detail_tag_text_size</item>
         <item name="android:textColor">@color/grey_small_title</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
     </style>
 
     <style name="dataTextViewDetailStyle">
         <item name="android:textSize">@dimen/detail_data_text_size</item>
         <item name="android:textColor">@color/basic_orange</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
     </style>
 
     <style name="infoTextViewDetailStyle">
         <item name="android:textSize">@dimen/detail_data_text_size</item>
         <item name="android:textColor">@color/basic_text_black</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
     </style>
 
     <style name="wannaJoinButtonStyle">
         <item name="android:textSize">@dimen/detail_title_text_size</item>
         <item name="android:background">@color/orange_button</item>
         <item name="android:textColor">@color/white_text_tag</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
+    </style>
+
+    <style name="tabCommentTextViewAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/detail_data_text_size</item>
+    </style>
+
+    <style name="askQuestionDetailHint">
+        <item name="android:textColorHint">@color/basic_orange</item>
+        <item name="android:textSize">@dimen/detail_tag_text_size</item>
+        <item name="android:paddingStart">@dimen/detail_ask_background_padding</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
+    </style>
+
+    <style name="joinDetailTextView">
+        <item name="android:textSize">@dimen/detail_fra_join_text_size</item>
+        <item name="android:textColor">@color/purple_fra_join</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
+    </style>
+
+    <style name="commentTimeTextView">
+        <item name="android:textSize">@dimen/detail_fra_join_text_size</item>
+        <item name="android:textColor">@color/grey_comment_time</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_line_sqacing_extra</item>
     </style>
 
 </resources>
