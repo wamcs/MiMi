@@ -39,6 +39,7 @@ import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.details.AskFragment.DetailAskFragment;
 import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
 import com.unique.app.community.details.Widget.KeyboardListenerLayout;
+import com.unique.app.community.details.Widget.ScrollViewWithListener;
 import com.unique.app.community.utils.ToastUtil;
 import com.unique.app.community.widget.CircularImageView;
 
@@ -62,10 +63,11 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
 
     @BindView(R.id.tool_bar)
     Toolbar toolbar;
+
     @BindView(R.id.detail_layout)
     KeyboardListenerLayout layout;
     @BindView(R.id.detail_scroll_layout)
-    ScrollView scrollView;
+    ScrollViewWithListener scrollView;
     @BindView(R.id.detail_text_view_flipper)
     TextView tagOfFlipper;
     @BindView(R.id.detail_title_text_view)
@@ -116,7 +118,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     private float slop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 
     private ArrayList<Fragment> frags;
-    private int whoReply = -1;
+    private boolean titleInToolbar = false;
 
     @Override
     protected DetailPresenter getPresenter() {
@@ -138,6 +140,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         initialFlipper();
         initialTab();
         initialKeyboardListener();
+        initialScrollView();
         test();
     }
 
@@ -192,7 +195,6 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
                             wannaJoin.requestFocus();
                         }
                     }, 100);
-                    whoReply = -1;
                 }
             }
         });
@@ -448,7 +450,6 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
      */
 
     public void reply(int who){
-        whoReply = who;
         replyEditText.setText("");
         replyEditText.setVisibility(View.VISIBLE);
         replyLayout.setVisibility(View.VISIBLE);
@@ -468,4 +469,31 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
             }
         });
     }
+
+    /**
+     * Listen to scrollview
+     */
+
+    // FIXME: 16/11/5 Put text to toolbar
+
+    private void initialScrollView(){
+
+        scrollView.setScrollListener(new ScrollViewWithListener.OnScrollListener() {
+            @Override
+            public void onScroll(int y, int oldY) {
+                if(y > getResources().getDimension(R.dimen.detail_viewflipper_height) + 100 + getResources().getDimension(R.dimen.detail_title_text_size)){
+                    if(!titleInToolbar) {
+                        ToastUtil.TextToast("Title in tool bar!");
+                        titleInToolbar = true;
+                    }
+                }else{
+                    if(titleInToolbar) {
+                        ToastUtil.TextToast("Title out tool bar!");
+                        titleInToolbar = false;
+                    }
+                }
+            }
+        });
+    }
+
 }

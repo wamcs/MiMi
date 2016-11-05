@@ -16,7 +16,7 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <ScrollView
+    <com.unique.app.community.details.Widget.ScrollViewWithListener
         android:id="@id/detail_scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -394,7 +394,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </com.unique.app.community.details.Widget.ScrollViewWithListener>
 
     <Button
         style="@style/wannaJoinButtonStyle"
@@ -410,7 +410,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/grey_small_title"
+        android:background="@color/white10"
         android:visibility="gone">
 
         <EditText
