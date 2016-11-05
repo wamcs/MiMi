@@ -8,7 +8,7 @@ import com.unique.app.community.base.Mvp.IView;
  * mail: kaili@hustunique.com
  * Created on 9/28/16.
  */
-public abstract class BaseListFragment<T extends IView,D> extends BaseFragment<BaseListPresenter<T,D>>
+public abstract class BaseListFragment<T extends BaseListPresenter> extends BaseFragment<T>
         implements IRefresh,RefreshListener{
 
     @Override

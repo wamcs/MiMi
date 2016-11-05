@@ -1,16 +1,12 @@
 package com.unique.app.community.loginAndRegister.login;
 
-import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IPresenter;
 import com.unique.app.community.loginAndRegister.forgetPassword.ForgetPasswordActivity;
 import com.unique.app.community.utils.ToastUtil;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Author: Alexander
@@ -21,18 +17,20 @@ import rx.schedulers.Schedulers;
 public class LoginPresenter extends BasePresenter<LoginActivity>
         implements IPresenter<LoginActivity> {
 
-    public LoginPresenter(Activity activity){
+    public LoginPresenter(AppCompatActivity activity){
         super(activity);
     }
 
-    public void login(){
-        // TODO: 16/10/12
+    public void login(String phone,String password){
         // To login
         ToastUtil.TextToast("Login successfully!");
+
+        //TODO:if success,finish activity,and add info to Account
+
     }
 
     public void forget(){
         // TODO: 16/10/12
-        ForgetPasswordActivity.start(mActivity, null);
+        mActivity.startActivity(new Intent(mActivity,ForgetPasswordActivity.class));
     }
 }

@@ -1,27 +1,135 @@
 package com.unique.app.community;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.unique.app.community.global.AppData;
-import com.unique.app.community.loginAndRegister.login.LoginActivity;
-import com.unique.app.community.loginAndRegister.register.RegisterActivity;
+import com.unique.app.community.base.Mvp.BaseActivity;
+import com.unique.app.community.base.Mvp.IView;
+import com.unique.app.community.global.App;
+import com.unique.app.community.utils.ToastUtil;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class MainActivity extends BaseActivity<MainPresenter> implements IView {
+
+
+    /**
+     * Init value is a non-zero value, and then will be set to value.
+     */
+    public int mCurrentIndex = 2;
+
+    @BindView(R.id.page_1)
+    ImageView page1;
+    @BindView(R.id.page_2)
+    ImageView page2;
+    @BindView(R.id.page_3)
+    ImageView page3;
+
+    @BindView(R.id.default_tool_bar_left_imageview)
+    ImageView mToolBarLeftImageview;
+    @BindView(R.id.tool_bar_title_text_view)
+    TextView mToolBarTitleTextView;
+    @BindView(R.id.default_tool_bar_right_imageview)
+    ImageView mToolBarRightImageview;
+
+    private long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        AppData.init(this.getApplicationContext());
     }
 
-    public void login(View view){
-        LoginActivity.start(this, null);
+    @Override
+    protected MainPresenter getPresenter() {
+        return new MainPresenter(this);
     }
 
-    public void register(View view){
-        RegisterActivity.start(this, null);
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initEventAndData() {
+        selectTab(0);
+        mToolBarLeftImageview.setVisibility(View.INVISIBLE);
+    }
+
+
+    public void selectTab(int index) {
+        if (mCurrentIndex == index) {
+            return;
+        }
+        //TODO:add image change
+        mCurrentIndex = index;
+        switch (mCurrentIndex){
+            case 0:
+                mToolBarTitleTextView.setText(R.string.app_name);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+
+        }
+        mPresenter.changeTab(index);
+
+    }
+
+    @Override
+    protected boolean isToolbarEnable() {
+        return true;
+    }
+
+    private void selectTab(boolean isCurrent, ImageView view, int resSelected, int resUnselected) {
+        if (isCurrent) {
+            view.setImageResource(resSelected);
+        } else {
+            view.setImageResource(resUnselected);
+        }
+    }
+
+
+
+    @OnClick(R.id.page_1)
+    void page_1() {
+        selectTab(0);
+    }
+
+    @OnClick(R.id.page_2)
+    void page_2() {
+        selectTab(1);
+    }
+
+    @OnClick(R.id.page_3)
+    void page_3() {
+        selectTab(2);
+    }
+
+    //根据不同的tab激活不同的方法
+    @OnClick(R.id.default_tool_bar_right_imageview)
+    void invoke(){
+        switch (mCurrentIndex){
+            case 0:
+
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            ToastUtil.TextToast(getString(R.string.exit));
+            exitTime = System.currentTimeMillis();
+        } else {
+            App.getInstance().AppExit();
+        }
     }
 }

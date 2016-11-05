@@ -30,7 +30,7 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(getLayoutId(), null);
+        mView = inflater.inflate(getLayoutId(),container,false);
         return mView;
     }
 

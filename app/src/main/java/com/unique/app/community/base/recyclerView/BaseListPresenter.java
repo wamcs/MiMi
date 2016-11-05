@@ -1,6 +1,8 @@
 package com.unique.app.community.base.recyclerView;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
@@ -30,11 +32,15 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
 
     private RefreshListener listener;
 
-    public BaseListPresenter(Activity activity,RefreshListener listener) {
+    public BaseListPresenter(AppCompatActivity activity, RefreshListener listener) {
         super(activity);
         this.listener = listener;
     }
 
+    public BaseListPresenter(Fragment fragment, RefreshListener listener) {
+        super(fragment);
+        this.listener = listener;
+    }
 
     /**
      * use this method to get list data,the default page is 1 and I use rxjava and lambda,

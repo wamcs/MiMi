@@ -41,11 +41,30 @@
     <color name="grey01">#191919</color>
     <color name="grey00">#FF000000</color>
 
+
+    <color name="purple_shadow_color">#6489849b</color>
+    <color name="main_page_shadow_color_dark">#12000000</color>
+    <color name="main_page_shadow_color_mid">#09000000</color>
+    <color name="main_page_shadow_color_light">#0000</color>
+
+
+    <color name="basic_orange">#ff8e5d</color>
+    <color name="basic_text_black">#282828</color>
+    <color name="basic_junior_text_black">#666666</color>
+
     <!---colors in login or register pages-->
-    <color name="black_text_login">#282828</color>
-    <color name="black_hint_and_button_login">#666666</color>
+
     <color name="grey_baseline_and_button_login">#c9c9c9</color>
-    <color name="orange_accent_button_and_text_login">#ff8e5d</color>
     <color name="grey_eye_vector_login">#FFc9c9c9</color>
+
+    <!--colors in details page-->
+    <color name="grey_tag_view_flipper">@color/black06</color>
+    <color name="white_text_tag">@color/white10</color>
+    <color name="grey_small_title">#656565</color>
+    <color name="orange_button">#c8ff8e5d</color>
+    <color name="grey_background">#f2f2f2</color>
+    <color name="grey_comment_time">#c3c3c3</color>
+    <color name="purple_fra_join">#c2a3fa</color>
+
 
 </resources>

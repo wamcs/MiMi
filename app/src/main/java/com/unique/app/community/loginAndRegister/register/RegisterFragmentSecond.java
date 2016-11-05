@@ -22,9 +22,9 @@ public class RegisterFragmentSecond extends BaseFragment<RegisterPresenter>
         implements IView {
 
     @BindView(R.id.reg_second_id_edit_text)
-    EditText editTextMobilePhoneNumber;
+    EditText studentIdEditText;
     @BindView(R.id.reg_second_nick_edit_text)
-    EditText editTextPassword;
+    EditText nickNameEdittext;
     @BindView(R.id.reg_button)
     Button buttonLogin;
 
@@ -43,12 +43,7 @@ public class RegisterFragmentSecond extends BaseFragment<RegisterPresenter>
         return ((RegisterActivity)getActivity()).getMPresenter();
     }
 
-    @Override
-    public void onStop(){
-        super.onStop();
-        // end count
-        mPresenter.endCount();
-    }
+
 
     /**
      *  Initialize all listeners
@@ -56,7 +51,11 @@ public class RegisterFragmentSecond extends BaseFragment<RegisterPresenter>
 
     @OnClick(R.id.reg_button)
     void finishRegister(){
-        mPresenter.register();
+        String sId = studentIdEditText.getText().toString().trim();
+        String nickname = nickNameEdittext.getText().toString().trim();
+
+        //TODO:check sId
+        mPresenter.register(sId,nickname);
     }
 
     /**
@@ -64,8 +63,8 @@ public class RegisterFragmentSecond extends BaseFragment<RegisterPresenter>
      */
 
     private void initializeTexts(){
-        editTextMobilePhoneNumber.setHint(getResources().getString(R.string.student_id));
-        editTextPassword.setHint(getResources().getString(R.string.nickname));
+        studentIdEditText.setHint(getResources().getString(R.string.student_id));
+        nickNameEdittext.setHint(getResources().getString(R.string.nickname));
         buttonLogin.setText(getResources().getString(R.string.finish_register));
     }
 }

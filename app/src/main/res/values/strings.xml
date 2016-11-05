@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Community</string>
+    <string name="app_name">觅觅</string>
 
     <string name="no_network">当前没有网络</string>
+    <string name="ensure">确定</string>
+    <string name="dismiss">取消</string>
+    <string name="exit">再按一次退出</string>
 
     <!--Login and Register pages-->
     <string name="mobile_phone_number">手机号</string>
@@ -20,4 +23,32 @@
     <string name="new_password">新密码</string>
     <string name="back">返回</string>
 
+    <string name="none_user_phone">未输入手机号</string>
+    <string name="none_user_password">未输入密码</string>
+    <string name="none_user_code">未输入验证码</string>
+    <string name="error_user_code">验证码错误</string>
+    <string name="error_user_phone">手机号格式错误</string>
+    <string name="error_user_password">密码格式错误</string>
+    
+    <string name="display_show_events">花园</string>
+    <string name="display_classification">分类</string>
+
+    <!--Detail page-->
+    <string name="has_applied">已申请</string>
+    <string name="has_joined">已加入</string>
+    <string name="start_time">开始时间</string>
+    <string name="sign_up_util">报名截止</string>
+    <string name="place_for_activity">活动地点</string>
+    <string name="required_num_people">人数要求</string>
+    <string name="cost_data">费用说明</string>
+    <string name="for_free">免费</string>
+    <string name="starter">发起者</string>
+    <string name="ratio_of_like">好评度</string>
+    <string name="wanna_join">我要加入</string>
+    <string name="ask_question">提问</string>
+    <string name="comment">评论</string>
+    <string name="joiner">参与者</string>
+    <string name="reply">回复</string>
+    <string name="wanna_comment_sth">说点什么？</string>
+    <string name="wanna_ask_sth">向发起者提问？</string>
 </resources>

@@ -2,8 +2,12 @@ package com.unique.app.community.loginAndRegister.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,6 +17,7 @@ import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.loginAndRegister.utils.Listeners;
+import com.unique.app.community.utils.PhoneChecker;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,15 +48,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     @BindView(R.id.eye_image_view)
     ImageView eyeImage;
 
+    private SpannableString spannableString;
+
     @Override
     protected LoginPresenter getPresenter() {
         return new LoginPresenter(mContext);
     }
 
-    public static void start(Context context, @Nullable Bundle bundle){
-        Intent starter = new Intent(context, LoginActivity.class);
-        context.startActivity(starter, bundle);
-    }
 
     @Override
     protected int getLayout() {
@@ -77,7 +80,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
 
     @OnClick(R.id.login_button)
     void login(){
-        mPresenter.login();
+        String phone = editTextMobilePhoneNumber.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+        if (phone.length()!= 11 || !PhoneChecker.checkPhoneForm(phone)){
+            spannableString = new SpannableString(this.getResources().getString(R.string.error_user_phone));
+            spannableString.setSpan(new ForegroundColorSpan(Color.RED),
+                    0, spannableString.length(),
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            editTextMobilePhoneNumber.setText(spannableString);
+        }
+
+        mPresenter.login(phone,password);
     }
 
     @OnClick(R.id.forget_password_text_view)
@@ -105,4 +118,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
         buttonLogin.setText(getResources().getString(R.string.login));
         textViewTitle.setText(getResources().getString(R.string.login));
     }
+
+
 }

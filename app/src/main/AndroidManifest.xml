@@ -2,22 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unique.app.community">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".global.App"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".loginAndRegister.login.LoginActivity"/>
+        <activity android:name=".loginAndRegister.register.RegisterActivity"/>
+        <activity android:name=".loginAndRegister.forgetPassword.ForgetPasswordActivity"/>
+        <activity android:name=".details.DetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginAndRegister.login.LoginActivity"/>
-        <activity android:name=".loginAndRegister.register.RegisterActivity"/>
-        <activity android:name=".loginAndRegister.forgetPassword.ForgetPasswordActivity"/>
 
     </application>
 

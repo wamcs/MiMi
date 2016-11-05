@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="tool_bar" type="id"/>
-    <item name="default_tool_bar_imageview" type="id"/>
+    <item name="default_tool_bar_left_imageview" type="id"/>
     <item name="default_tool_bar_textview" type="id"/>
+    <item name="default_tool_bar_right_imageview" type="id"/>
+
+
+    <!--mainActivity ids-->
+    <item name="page_1" type="id"/>
+    <item name="page_2" type="id"/>
+    <item name="page_3" type="id"/>
+    <item name="bottom_tab_layout" type="id"/>
 
     <!--login, register and iForget activity-->
     <item name="login_phone_edit_text" type="id"/>
@@ -33,5 +41,56 @@
     <item name="tool_bar_back_button" type="id"/>
     <item name="tool_bar_title_text_view" type="id"/>
 
+    <!--displayFragment ids-->
+    <item name="display_tab_layout" type="id"/>
+    <item name="display_viewpager" type="id"/>
 
+    <!--details activity-->
+    <item name="detail_layout" type="id"/>
+    <item name="detail_scroll_layout" type="id"/>
+    <item name="detail_view_flipper" type="id"/>
+    <item name="detail_text_view_flipper" type="id"/>
+    <item name="detail_title_text_view" type="id"/>
+    <item name="detail_text_text_view" type="id"/>
+    <item name="detail_layout_applied" type="id"/>
+    <item name="detail_text_view_num_applied" type="id"/>
+    <item name="detail_layout_joined" type="id"/>
+    <item name="detail_text_view_num_joined" type="id"/>
+    <item name="detail_text_view_start_time" type="id"/>
+    <item name="detail_text_view_sign_up_util" type="id"/>
+    <item name="detail_text_view_place" type="id"/>
+    <item name="detail_text_view_requirement" type="id"/>
+    <item name="detail_text_view_cost" type="id"/>
+    <item name="detail_image_view_starter" type="id"/>
+    <item name="detail_text_view_starter" type="id"/>
+    <item name="detail_text_view_ratio_title" type="id"/>
+    <item name="detail_text_view_ratio" type="id"/>
+    <item name="detail_button_wanna_join" type="id"/>
+    <item name="detail_layout_left_icons" type="id"/>
+    <item name="detail_layout_right_icons" type="id"/>
+    <item name="detail_ask_comment_edit_text" type="id"/>
+    <item name="detail_tab_layout_widget" type="id"/>
+    <item name="detail_tab_comment_tab" type="id"/>
+    <item name="detail_tab_ask_tab" type="id"/>
+    <item name="detail_recycler_view" type="id"/>
+    <item name="detail_view_pager_fragment" type="id"/>
+    <item name="detail_text_view_read_more" type="id"/>
+    <item name="detail_fra_icon_comment" type="id"/>
+    <item name="detail_fra_layout_comment" type="id"/>
+    <item name="detail_fra_text_view_name_comment" type="id"/>
+    <item name="detail_fra_text_view_join_comment" type="id"/>
+    <item name="detail_fra_text_view_time_comment" type="id"/>
+    <item name="detail_fra_text_view_text_comment" type="id"/>
+    <item name="detail_fra_text_view_reply_comment" type="id"/>
+    <item name="detail_fra_icon_ask" type="id"/>
+    <item name="detail_fra_layout_ask_one" type="id"/>
+    <item name="detail_fra_layout_ask_two" type="id"/>
+    <item name="detail_fra_text_view_name_ask" type="id"/>
+    <item name="detail_fra_text_view_time_ask" type="id"/>
+    <item name="detail_fra_text_view_question_ask" type="id"/>
+    <item name="detail_fra_text_view_answer_ask" type="id"/>
+    <item name="detail_fra_image_light_ask" type="id"/>
+    <item name="detail_text_view_see_more" type="id"/>
+    <item name="detail_layout_reply" type="id"/>
+    <item name="detail_edit_text_reply" type="id"/>
 </resources>
