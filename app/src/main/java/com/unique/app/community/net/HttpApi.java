@@ -50,6 +50,10 @@ public class HttpApi {
         return ActivityApi.getInstant().getEventsInner(page);
     }
 
+    public static Observable<Response<List<Event>>> getPublishEvents(int page,User user){
+        return ActivityApi.getInstant().getPublishEventsInner(page,user);
+    }
+
     public static Observable<Response<List<EventTag>>> getEventTags(){
         return ActivityApi.getInstant().getEventsTagInner();
     }

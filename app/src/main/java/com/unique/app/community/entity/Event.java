@@ -20,10 +20,11 @@ import java.util.List;
 public class Event extends AVObject {
 
     // 活动状态
-    // 1-有效 0-无效
+    // 0-报名 1-开始 2-结束
     private static final String STATE = "state";
-    public static final int invalid = 0;
-    public static final int valid = 1;
+    public static final int signup = 0;
+    public static final int begining = 1;
+    public static final int end = 2;
 
     // 活动所需人数
     private static final String EXCEPTED = "excepted";
@@ -49,8 +50,36 @@ public class Event extends AVObject {
     private static final String SUBJECT = "subject";
     //发起人
     private static final String SPONSOR = "sponsor";
-
+    //参与人数
     private static final String PARTICIPANTS_COUNT = "ParticipantsCount";
+    //活动评分
+    private static final String GRADE = "grade";
+    //等待审核用户
+    private static final String WAITING_USER = "waiting";
+
+    public  String getGrade() {
+        return getString(GRADE);
+    }
+
+    public void setGrade(String grade){
+        put(GRADE,grade);
+    }
+
+    public AVRelation<User> getWaitingUser(){
+        return getRelation(WAITING_USER);
+    }
+
+    public void setWaitingUser(User user){
+        AVRelation<User> avRelation = getParticipation();
+        avRelation.add(user);
+        put(WAITING_USER,avRelation);
+    }
+
+    public void setWaitingUsers(List<User> users){
+        AVRelation<User> avRelation = getParticipation();
+        avRelation.addAll(users);
+        put(WAITING_USER,avRelation);
+    }
 
     public int getCount() {
         return getInt(PARTICIPANTS_COUNT);

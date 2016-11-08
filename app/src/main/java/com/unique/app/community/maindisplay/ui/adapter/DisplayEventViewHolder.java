@@ -124,7 +124,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
                     }
 
                     for (String tag : tags){
-                        View view = Inflater.inflate(R.layout.item_display_event_tag,displayItemTagsContainer,false);
+                        View view = Inflater.inflate(R.layout.item_event_tag,displayItemTagsContainer,false);
                         TextView text = (TextView) view.findViewById(R.id.display_item_event_tag);
                         text.setText(tag);
                         displayItemTagsContainer.addView(view);

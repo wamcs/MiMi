@@ -72,6 +72,13 @@
 
     <!--userCenter Strings-->
     <string name="user_center">个人中心</string>
+    
+    <!--myEventList Strings-->
+    <string name="launch_activity">发起的活动</string>
+    <string name="modify_activity">修改活动</string>
+    <string name="inspect_user">查看报名用户</string>
+    <string name="activity_finish">活动已结束</string>
+    <string name="grade">评分</string>
 
 
 
