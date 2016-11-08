@@ -3,10 +3,9 @@ package com.unique.app.community;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.unique.app.community.base.Mvp.BasePresenter;
-import com.unique.app.community.maindisplay.ui.fragment.DisplayFragment;
+import com.unique.app.community.maindisplay.ui.fragment.DisplayEventsFragment;
 import com.unique.app.community.maindisplay.ui.fragment.MessageFragment;
 import com.unique.app.community.maindisplay.ui.fragment.UserCenterFragment;
 
@@ -66,7 +65,7 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void init(){
-        fragments.add(new DisplayFragment());
+        fragments.add(new DisplayEventsFragment());
         fragments.add(new MessageFragment());
         fragments.add(new UserCenterFragment());
         changeTab(0);

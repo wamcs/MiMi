@@ -1,28 +1,14 @@
 package com.unique.app.community.entity;
 
 import android.os.Parcel;
-import android.util.Log;
 
 import com.avos.avoscloud.AVClassName;
-import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVRelation;
-import com.avos.avoscloud.FindCallback;
-import com.unique.app.community.net.HttpApi;
-import com.unique.app.community.net.Response;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
-
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * Author: Wamcs
@@ -64,21 +50,21 @@ public class Event extends AVObject {
     //发起人
     private static final String SPONSOR = "sponsor";
 
-    private static final String PARITCIPANTSCOUNT = "ParitcipantsCount";
+    private static final String PARTICIPANTS_COUNT = "ParticipantsCount";
 
     public int getCount() {
-        return getInt(PARITCIPANTSCOUNT);
+        return getInt(PARTICIPANTS_COUNT);
     }
 
     public void addCount(){
-        put(PARITCIPANTSCOUNT,getCount()+1);
+        put(PARTICIPANTS_COUNT,getCount()+1);
     }
 
     public void reduceCount(){
         if (getCount() == 0){
             return;
         }
-        put(PARITCIPANTSCOUNT,getCount()-1);
+        put(PARTICIPANTS_COUNT,getCount()-1);
     }
 
     public String getImage(){

@@ -1,24 +1,16 @@
 package com.unique.app.community.maindisplay.ui.fragment;
 
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.base.recyclerView.BaseListFragment;
-import com.unique.app.community.base.recyclerView.RefreshListener;
 import com.unique.app.community.maindisplay.presenter.DisplayEventsPresenter;
 import com.unique.app.community.maindisplay.ui.adapter.DisplayEventsAdapter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * Author: Wamcs

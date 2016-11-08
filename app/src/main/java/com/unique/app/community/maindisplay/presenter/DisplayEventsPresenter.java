@@ -1,10 +1,5 @@
 package com.unique.app.community.maindisplay.presenter;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import com.unique.app.community.base.recyclerView.BaseAdapter;
 import com.unique.app.community.base.recyclerView.BaseListPresenter;
 import com.unique.app.community.base.recyclerView.RefreshListener;
 import com.unique.app.community.entity.Event;
@@ -18,7 +13,6 @@ import java.util.List;
 
 import rx.Observable;
 import rx.functions.Func1;
-import rx.functions.Func2;
 import timber.log.Timber;
 
 /**

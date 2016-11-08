@@ -10,7 +10,6 @@ import com.avos.avoscloud.UpdatePasswordCallback;
 import com.unique.app.community.entity.User;
 
 import rx.Observable;
-import rx.schedulers.Schedulers;
 
 /**
  * Author: Wamcs

@@ -1,7 +1,6 @@
 package com.unique.app.community.maindisplay.ui.adapter;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -100,7 +99,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
 
     private void parseText(Event event) {
         displayItemPositionText.setText(event.getPlace());
-        //displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getParticipation().size(), event.getExcepted()));
+        displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getCount(), event.getExcepted()));
         displayItemActivityTimeText.setText(TimeUtils.parseDate(event.getTime()));
         displayItemReleaseTimeText.setText(TimeUtils.parseDate(event.getCreatedAt()));
     }
@@ -138,7 +137,7 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
 
     @OnClick(R.id.display_item_root)
     void item_root(){
-        //TODO:进入event展示界面
+        //TODO:进入event展示界面,要判定下发布者是否为当前用户,貌似需求加了,修改可以套用postEvent
         Intent intent = new Intent(fragment.getContext(), DetailActivity.class);
         intent.putExtra(Conf.EVENT_DATA,event);
         fragment.startActivity(intent);

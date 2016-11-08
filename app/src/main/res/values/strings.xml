@@ -70,6 +70,9 @@
     <!--postEventActivity Strings-->
     <string name="post">发布</string>
 
+    <!--userCenter Strings-->
+    <string name="user_center">个人中心</string>
+
 
 
 </resources>

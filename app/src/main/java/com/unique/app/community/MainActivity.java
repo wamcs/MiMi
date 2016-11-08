@@ -71,10 +71,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IView {
         switch (mCurrentIndex){
             case 0:
                 mToolBarTitleTextView.setText(R.string.app_name);
+                mToolBarRightImageview.setImageResource(R.mipmap.img_post);
                 break;
             case 1:
                 break;
             case 2:
+                mToolBarTitleTextView.setText(R.string.user_center);
+                mToolBarRightImageview.setImageResource(R.mipmap.img_edit);
                 break;
 
         }
@@ -117,7 +120,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IView {
     void invoke(){
         switch (mCurrentIndex){
             case 0:
-
+                //TODO:postEvent
                 break;
             case 1:
                 break;

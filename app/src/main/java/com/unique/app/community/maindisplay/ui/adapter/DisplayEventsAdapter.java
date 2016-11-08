@@ -1,7 +1,5 @@
 package com.unique.app.community.maindisplay.ui.adapter;
 
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
