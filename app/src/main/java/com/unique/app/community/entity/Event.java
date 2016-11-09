@@ -34,8 +34,10 @@ public class Event extends AVObject {
     private static final String CONTENT = "content";
     //评论
     private static final String COMMENTS = "comments";
-    //时间
-    private static final String TIME = "time";
+    //开始时间
+    private static final String START_TIME = "start_time";
+    //结束
+    private static final String END_TIME = "end_time";
     // 种类 0-普通 1-付费
     private static final String TYPE = "type";
     public static final int NORMAL = 0;
@@ -124,12 +126,20 @@ public class Event extends AVObject {
         put(CONTENT,content);
     }
 
-    public Date getTime(){
-        return getDate(TIME);
+    public Date getStartTime(){
+        return getDate(START_TIME);
     }
 
-    public void setTime(Date date){
-        put(TIME,date);
+    public void setStartTime(Date date){
+        put(START_TIME,date);
+    }
+
+    public Date getEndTime(){
+        return getDate(END_TIME);
+    }
+
+    public void setEndTime(Date date){
+        put(END_TIME,date);
     }
 
     public String getPlace(){

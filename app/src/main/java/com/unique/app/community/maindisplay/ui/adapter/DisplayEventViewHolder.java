@@ -100,8 +100,8 @@ public class DisplayEventViewHolder extends BaseViewHolder<Event> {
     private void parseText(Event event) {
         displayItemPositionText.setText(event.getPlace());
         displayItemPersonText.setText(String.format("当前人数(%d/%d)", event.getCount(), event.getExcepted()));
-        displayItemActivityTimeText.setText(TimeUtils.parseDate(event.getTime()));
-        displayItemReleaseTimeText.setText(TimeUtils.parseDate(event.getCreatedAt()));
+        displayItemActivityTimeText.setText(TimeUtils.parseDate(event.getEndTime()));
+        displayItemReleaseTimeText.setText(TimeUtils.parseDate(event.getStartTime()));
     }
 
     private void parseTags(Event event) {
