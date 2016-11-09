@@ -222,10 +222,8 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         nameOfStarter.setText(name);
     }
 
-    // FIXME: 16/10/22
-    // Depends on type of ratio
-    public void setRatioOfLike(int ratio){
-        ratioOfLike.setText(String.format(Locale.CHINA, "%d%%", ratio));
+    public void setRatioOfLike(String ratio){
+        ratioOfLike.setText(ratio);
     }
 
     public void addPic(String picture){
@@ -233,9 +231,9 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
                 .error(R.mipmap.default_avatar).into(picImageView);
     }
 
-    // FIXME: 16/10/22
-    public void setStarterIcon(Bitmap icon){
-        iconOfStarter.setImageBitmap(icon);
+    public void setStarterIcon(String icon){
+        Glide.with(this).load(icon)
+                .error(R.mipmap.default_avatar).into(iconOfStarter);
     }
 
     // FIXME: 16/10/22

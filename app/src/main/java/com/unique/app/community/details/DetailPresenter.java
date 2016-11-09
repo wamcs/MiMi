@@ -6,8 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVRelation;
 import com.unique.app.community.entity.User;
+import com.unique.app.community.net.HttpApi;
+import com.unique.app.community.net.Response;
 import com.unique.app.community.utils.TimeUtils;
 
 import com.unique.app.community.R;
@@ -19,7 +22,11 @@ import com.unique.app.community.entity.Event;
 import com.unique.app.community.utils.ToastUtil;
 
 import java.sql.Time;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Author: Alexander
@@ -31,6 +38,8 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         implements IPresenter<DetailActivity> {
 
     private Event event;
+    private List<User> applied;
+    private List<User> joined;
 
     private FragmentManager fragmentManager;
     private DetailCommentFragment commentFragment;
@@ -67,21 +76,20 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
     }
 
     private void initialAllText(){
-        // FIXME: 16/11/9
-        // fix the way of getting image
+        initialAVRelation();
         ((DetailActivity)mView).addPic(event.getImage());
         ((DetailActivity)mView).setMainTitle(event.getSubject());
         ((DetailActivity)mView).setMainText(event.getContent());
-        // Get the number of application
-        ((DetailActivity)mView).setHasJoinNum(event.getCount());
-        ((DetailActivity)mView).setStartTime(TimeUtils.parseDate(event.getTime()));
-        // Get the util-time
+        ((DetailActivity)mView).setStartTime(TimeUtils.parseDate(event.getStartTime()));
+        ((DetailActivity)mView).setUtilTime(TimeUtils.parseDate(event.getEndTime()));
         ((DetailActivity)mView).setActivityPlace(event.getPlace());
         ((DetailActivity)mView).setRequirement(event.getExcepted());
         ((DetailActivity)mView).setCost(event.getType());
-        ((DetailActivity)mView).setStarterIcon(BitmapFactory.decodeFile(event.getSponsor().getAvatat().getUrl()));
+        ((DetailActivity)mView).setStarterIcon(event.getSponsor().getAvatat().getUrl());
         ((DetailActivity)mView).setNameOfStarter(event.getSponsor().getNickname());
-        // Get the ratio of like
+        ((DetailActivity)mView).setRatioOfLike(event.getGrade());
+        setAppliedIcons();
+        setJoinedIcons();
     }
 
     public void setUtilTime(String time){
@@ -104,7 +112,7 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).setNameOfStarter(name);
     }
 
-    public void setRatioOfLike(int ratio){
+    public void setRatioOfLike(String ratio){
         ((DetailActivity)mView).setRatioOfLike(ratio);
     }
 
@@ -112,17 +120,20 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).addPic(picture);
     }
 
-    public void setStarterIcon(Bitmap icon){
+    public void setStarterIcon(String icon){
         ((DetailActivity)mView).setStarterIcon(icon);
     }
 
     private void setAppliedIcons(){
-
+        for(User user : applied){
+            ((DetailActivity)mView).addPicToAppliedIcons(user.getAvatat().getUrl());
+        }
     }
 
     private void setJoinedIcons(){
-        AVRelation<User> joins = event.getParticipation();
-
+        for(User user : joined){
+            ((DetailActivity)mView).addPicToJoinedIcons(user.getAvatat().getUrl());
+        }
     }
 
     public void addPicToAppliedIcons(String icon){
@@ -143,6 +154,31 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
 
     public FragmentManager getFragmentManager(){
         return fragmentManager;
+    }
+
+    private void initialAVRelation(){
+        HttpApi.getRelativeUser(event.getWaitingUser())
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(listResponse -> {
+                    if (listResponse.getCode() == Response.SUCCESS) {
+                        applied = listResponse.getData();
+                    }
+                }, throwable -> {
+                    Timber.d("get waiting user error:%s"+throwable.toString());
+                });
+        HttpApi.getRelativeUser(event.getParticipation())
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(listResponse -> {
+                    if (listResponse.getCode() == Response.SUCCESS) {
+                        joined = listResponse.getData();
+                    }
+                }, throwable -> {
+                    Timber.d("get participation error:%s"+throwable.toString());
+                });
+        ((DetailActivity)mView).setHasAppliedNum(applied.size());
+        ((DetailActivity)mView).setHasJoinNum(joined.size());
     }
 
 }
