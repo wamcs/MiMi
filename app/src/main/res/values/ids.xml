@@ -112,9 +112,17 @@
     <item name="image_choose_dialog_take_phone" type="id"/>
     <item name="image_choose_dialog_phone_album" type="id"/>
     <item name="image_choose_dialog_canal" type="id"/>
+    <item name="image_choose_dialog_phone_album_gridview" type="id"/>
+    <item name="image_choose_dialog_phone_album_gridview_item" type="id"/>
 
     <!--postEvent ids-->
     <item name="post_event_activity_bottom_button" type="id"/>
 
+    <!--myEventList ids-->
+    <item name="publish_activity_refresh_layout" type="id"/>
+    <item name="publish_activity_recyclerview" type="id"/>
+    <item name="publish_activity_unfinish_item_modify_button" type="id"/>
+    <item name="publish_activity_unfinish_item_user_list_button" type="id"/>
+    <item name="publish_activity_finished_item_grade" type="id"/>
 
 </resources>

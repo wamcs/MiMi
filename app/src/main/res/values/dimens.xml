@@ -103,4 +103,7 @@
     <!--PostEvent dimens-->
     <dimen name="post_event_bottom_button">50dp</dimen>
 
+    <!--myEventList dimens-->
+    <dimen name="launch_activity_item_height">230dp</dimen>
+
 </resources>

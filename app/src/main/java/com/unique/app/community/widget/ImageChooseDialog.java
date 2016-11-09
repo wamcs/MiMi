@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVFile;
 import com.unique.app.community.R;
 import com.unique.app.community.global.Conf;
 import com.unique.app.community.permission.PermissionDispatcher;
@@ -135,8 +136,13 @@ public class ImageChooseDialog extends Dialog {
 
     @OnClick(R.id.image_choose_dialog_phone_album)
     void startPhoneAlbum() {
-//        Intent intent = new Intent(); TODO:we need create grid view
-//        ......
+        if (fragment!=null){
+            Intent intent = new Intent(fragment.getContext(),PhoneAlbumActivity.class);
+            fragment.startActivityForResult(intent,Conf.REQUEST_CODE_ALBUM);
+        }else if (activity!=null){
+            Intent intent = new Intent(activity,PhoneAlbumActivity.class);
+            activity.startActivityForResult(intent,Conf.REQUEST_CODE_ALBUM);
+        }
     }
 
     @OnClick(R.id.image_choose_dialog_take_phone)
