@@ -73,16 +73,16 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
         }).toList();
         // FIXME: 16/11/4
         // Test data
-//        ArrayList<EventComment> testList = new ArrayList<>();
-//        User testUser = new User();
-//        testUser.setNickname("二狗子");
-//        EventComment testComment = new EventComment();
-//        testComment.setSender(testUser);
-//        testComment.setContent("好棒呀，摄影大大带我飞");
-//        testList.add(testComment);
-//        testList.add(testComment);
-//        testList.add(testComment);
-//        return Observable.just(testList);
+        /*  ArrayList<EventComment> testList = new ArrayList<>();
+          User testUser = new User();
+          testUser.setNickname("二狗子");
+          EventComment testComment = new EventComment();
+          testComment.setSender(testUser);
+          testComment.setContent("好棒呀，摄影大大带我飞");
+          testList.add(testComment);
+          testList.add(testComment);
+          testList.add(testComment);
+          return Observable.just(testList);*/
     }
 
     @Override
@@ -117,5 +117,4 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
         //TODO:还没想好怎么写
         return false;
     }
-
 }

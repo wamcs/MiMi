@@ -1,19 +1,25 @@
 package com.unique.app.community.details;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.avos.avoscloud.AVRelation;
+import com.unique.app.community.entity.User;
+import com.unique.app.community.utils.TimeUtils;
+
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IPresenter;
-import com.unique.app.community.details.AskFragment.DetailAskFragment;
-import com.unique.app.community.details.AskFragment.DetailAskPresenter;
 import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
 import com.unique.app.community.details.CommentFragment.DetailCommentPresenter;
 import com.unique.app.community.entity.Event;
 import com.unique.app.community.utils.ToastUtil;
+
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Author: Alexander
@@ -27,27 +33,26 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
     private Event event;
 
     private FragmentManager fragmentManager;
-    private DetailAskFragment askFragment;
     private DetailCommentFragment commentFragment;
-
-    private DetailAskPresenter askPresenter;
     private DetailCommentPresenter commentPresenter;
 
     public DetailPresenter(AppCompatActivity activity) {
         super(activity);
-        initialFrags();
+        initialFrag();
+    }
+
+    private void initialFrag(){
+        commentFragment = new DetailCommentFragment();
+        commentPresenter = new DetailCommentPresenter(commentFragment, commentFragment, event);
+        fragmentManager = mActivity.getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.detail_fragment_layout, commentFragment)
+                .commit();
     }
 
     public void getData(Event event){
         this.event = event;
-    }
-
-    public void initialFrags(){
-        fragmentManager = mActivity.getSupportFragmentManager();
-        askFragment = new DetailAskFragment();
-        commentFragment = new DetailCommentFragment();
-        askPresenter = new DetailAskPresenter(askFragment, askFragment);
-        commentPresenter = new DetailCommentPresenter(commentFragment, commentFragment,event);
+        initialAllText();
     }
 
     public void iWannaJoin(){
@@ -61,16 +66,22 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         // TODO: 16/11/5  
     }
 
-    public void setMainTitle(String title){
-        ((DetailActivity)mView).setMainTitle(title);
-    }
-
-    public void setMainText(String text){
-        ((DetailActivity)mView).setMainText(text);
-    }
-
-    public void setStartTime(String time){
-        ((DetailActivity)mView).setStartTime(time);
+    private void initialAllText(){
+        // FIXME: 16/11/9
+        // fix the way of getting image
+        ((DetailActivity)mView).addPic(event.getImage());
+        ((DetailActivity)mView).setMainTitle(event.getSubject());
+        ((DetailActivity)mView).setMainText(event.getContent());
+        // Get the number of application
+        ((DetailActivity)mView).setHasJoinNum(event.getCount());
+        ((DetailActivity)mView).setStartTime(TimeUtils.parseDate(event.getTime()));
+        // Get the util-time
+        ((DetailActivity)mView).setActivityPlace(event.getPlace());
+        ((DetailActivity)mView).setRequirement(event.getExcepted());
+        ((DetailActivity)mView).setCost(event.getType());
+        ((DetailActivity)mView).setStarterIcon(BitmapFactory.decodeFile(event.getSponsor().getAvatat().getUrl()));
+        ((DetailActivity)mView).setNameOfStarter(event.getSponsor().getNickname());
+        // Get the ratio of like
     }
 
     public void setUtilTime(String time){
@@ -85,8 +96,8 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).setRequirement(num);
     }
 
-    public void setCost(Float cost){
-        ((DetailActivity)mView).setCost(cost);
+    public void setCost(int i){
+        ((DetailActivity)mView).setCost(i);
     }
 
     public void setNameOfStarter(String name){
@@ -97,32 +108,33 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).setRatioOfLike(ratio);
     }
 
-    public void addPicToFlipper(Bitmap picture){
-        ((DetailActivity)mView).addPicToFlipper(picture);
+    public void addPicToFlipper(String picture){
+        ((DetailActivity)mView).addPic(picture);
     }
 
     public void setStarterIcon(Bitmap icon){
         ((DetailActivity)mView).setStarterIcon(icon);
     }
 
-    public void addPicToAppliedIcons(Bitmap icon){
+    private void setAppliedIcons(){
+
+    }
+
+    private void setJoinedIcons(){
+        AVRelation<User> joins = event.getParticipation();
+
+    }
+
+    public void addPicToAppliedIcons(String icon){
         ((DetailActivity)mView).addPicToAppliedIcons(icon);
     }
 
-    public void addPicToJoinedIcons(Bitmap icon){
+    public void addPicToJoinedIcons(String icon){
         ((DetailActivity)mView).addPicToJoinedIcons(icon);
     }
 
     public DetailCommentPresenter getCommentPresenter(){
         return commentPresenter;
-    }
-
-    public DetailAskPresenter getAskPresenter(){
-        return askPresenter;
-    }
-
-    public DetailAskFragment getAskFragment(){
-        return askFragment;
     }
 
     public DetailCommentFragment getCommentFragment(){
@@ -132,4 +144,5 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
     public FragmentManager getFragmentManager(){
         return fragmentManager;
     }
+
 }

@@ -45,6 +45,7 @@
     <string name="required_num_people">人数要求</string>
     <string name="cost_data">费用说明</string>
     <string name="for_free">免费</string>
+    <string name="cost_a_lot">付费</string>
     <string name="starter">发起者</string>
     <string name="ratio_of_like">好评度</string>
     <string name="wanna_join">我要加入</string>
