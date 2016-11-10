@@ -72,7 +72,7 @@ public class User extends AVUser {
         put(NICKNAME,nickname);
     }
 
-    public AVFile getAvatat(){
+    public AVFile getAvatar(){
         return getAVFile(AVATAR);
     }
 

@@ -1,33 +1,17 @@
 package com.unique.app.community.details;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.GestureDetector;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethod;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,8 +20,6 @@ import com.bumptech.glide.Glide;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.base.Mvp.IView;
-import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
-import com.unique.app.community.details.CommentFragment.DetailCommentPresenter;
 import com.unique.app.community.details.Widget.KeyboardListenerLayout;
 import com.unique.app.community.details.Widget.ReplyDialog;
 import com.unique.app.community.details.Widget.ScrollViewWithListener;
@@ -46,14 +28,10 @@ import com.unique.app.community.global.Conf;
 import com.unique.app.community.utils.ToastUtil;
 import com.unique.app.community.widget.CircularImageView;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.unique.app.community.global.AppData.getContext;
 
 /**
  * Author: Alexander
@@ -333,7 +311,6 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     // FIXME: 16/11/5 Put text to toolbar
 
     private void initialScrollView(){
-
         scrollView.setScrollListener(new ScrollViewWithListener.OnScrollListener() {
             @Override
             public void onScroll(int y, int oldY) {

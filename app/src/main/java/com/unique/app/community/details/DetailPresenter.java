@@ -79,7 +79,7 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).setActivityPlace(event.getPlace());
         ((DetailActivity)mView).setRequirement(event.getExcepted());
         ((DetailActivity)mView).setCost(event.getType());
-        ((DetailActivity)mView).setStarterIcon(event.getSponsor().getAvatat().getUrl());
+        ((DetailActivity)mView).setStarterIcon(event.getSponsor().getAvatar().getUrl());
         ((DetailActivity)mView).setNameOfStarter(event.getSponsor().getNickname());
         ((DetailActivity)mView).setRatioOfLike(event.getGrade());
         setAppliedIcons();
@@ -120,13 +120,13 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
 
     private void setAppliedIcons(){
         for(User user : applied){
-            ((DetailActivity)mView).addPicToAppliedIcons(user.getAvatat().getUrl());
+            ((DetailActivity)mView).addPicToAppliedIcons(user.getAvatar().getUrl());
         }
     }
 
     private void setJoinedIcons(){
         for(User user : joined){
-            ((DetailActivity)mView).addPicToJoinedIcons(user.getAvatat().getUrl());
+            ((DetailActivity)mView).addPicToJoinedIcons(user.getAvatar().getUrl());
         }
     }
 

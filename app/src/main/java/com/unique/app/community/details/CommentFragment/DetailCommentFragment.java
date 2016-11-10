@@ -71,7 +71,6 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
             }
         });
         recyclerView.setAdapter(mPresenter.getAdapter());
-        mPresenter.refreshNum();
     }
 
     @Override
@@ -85,7 +84,7 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
     }
 
     public void setCommentText(int numberOfComment){
-        commentText.setText(String.format(Locale.CHINA, getResources().getString(R.string.comment) + " %d", numberOfComment));
+        commentText.setText(getResources().getString(R.string.comment) + String.format(Locale.CHINA, " %d", numberOfComment));
     }
 
     private void setEnterToSend(){
@@ -105,6 +104,5 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
     @OnClick(R.id.detail_text_view_read_more)
     void readMore(){
         mPresenter.refreshBottom();
-        mPresenter.refreshNum();
     }
 }

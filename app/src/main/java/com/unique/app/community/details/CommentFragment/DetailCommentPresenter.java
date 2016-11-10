@@ -1,7 +1,6 @@
 package com.unique.app.community.details.CommentFragment;
 
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
 import com.unique.app.community.base.recyclerView.BaseListPresenter;
 import com.unique.app.community.base.recyclerView.RefreshListener;
@@ -9,7 +8,6 @@ import com.unique.app.community.entity.Event;
 import com.unique.app.community.entity.EventComment;
 import com.unique.app.community.entity.User;
 import com.unique.app.community.net.HttpApi;
-import com.unique.app.community.net.OtherApi;
 import com.unique.app.community.net.Response;
 import com.unique.app.community.utils.ToastUtil;
 
@@ -17,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -129,7 +125,15 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
         return false;
     }
 
-    public void refreshNum(){
+    @Override
+    public void refreshBottom() {
+        super.refreshBottom();
+        ((DetailCommentFragment) mFragment).setCommentText(eventComments.size());
+    }
+
+    @Override
+    public void refreshTop() {
+        super.refreshTop();
         ((DetailCommentFragment) mFragment).setCommentText(eventComments.size());
     }
 }

@@ -2,12 +2,8 @@ package com.unique.app.community.details.CommentFragment;
 
 import android.view.ViewGroup;
 
-import com.unique.app.community.R;
 import com.unique.app.community.base.recyclerView.BaseAdapter;
 import com.unique.app.community.base.recyclerView.BaseViewHolder;
-import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
-import com.unique.app.community.details.CommentFragment.CommentVewHolder;
-import com.unique.app.community.details.DetailActivity;
 import com.unique.app.community.entity.EventComment;
 
 /**

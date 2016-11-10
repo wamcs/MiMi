@@ -1,23 +1,16 @@
 package com.unique.app.community.details.CommentFragment;
 
-import android.graphics.BitmapFactory;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.unique.app.community.R;
-import com.unique.app.community.base.Mvp.BaseFragment;
 import com.unique.app.community.base.recyclerView.BaseViewHolder;
 import com.unique.app.community.details.DetailActivity;
 import com.unique.app.community.entity.EventComment;
-import com.unique.app.community.utils.TimeUtils;
-import com.unique.app.community.utils.ToastUtil;
 import com.unique.app.community.widget.CircularImageView;
 
 import butterknife.BindView;
@@ -54,7 +47,7 @@ public class CommentVewHolder extends BaseViewHolder<EventComment> {
 
     @Override
     public void bindData(EventComment data) {
-        //Glide.with(fragment).load(data.getSender().getAvatat().getUrl())
+        //Glide.with(fragment).load(data.getSender().getAvatar().getUrl())
         //        .error(R.mipmap.default_avatar).into(mIconComment);
         mNameText.setText(data.getSender().getNickname());
         mStatusText.setVisibility(View.VISIBLE);
