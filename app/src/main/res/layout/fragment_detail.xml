@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:layout_margin="@dimen/detail_fra_margin_ten"/>
+        android:layout_margin="@dimen/detail_margin_twenty_vertical"/>
 
     <EditText
         style="@style/askQuestionDetailHint"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
-        android:layout_marginBottom="@dimen/detail_margin_forty_vertical"
+        android:layout_marginBottom="@dimen/detail_margin_bottom"
         android:text="查看更多"
         android:clickable="true" />
 

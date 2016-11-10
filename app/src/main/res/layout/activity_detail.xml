@@ -359,32 +359,5 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone"/>
 
-    <LinearLayout
-        android:id="@id/detail_layout_reply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white10"
-        android:visibility="gone">
-
-        <EditText
-            style="@style/askQuestionDetailHint"
-            android:id="@id/detail_edit_text_reply"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_ask_background_height"
-            android:background="@drawable/shape_ask_question_background"
-            android:maxLines="1"
-            android:imeOptions="actionSend"
-            android:inputType="text"
-            android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
-            android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
-            android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
-            android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"
-            android:visibility="gone"/>
-
-    </LinearLayout>
-
-
-
 </com.unique.app.community.details.Widget.KeyboardListenerLayout>
 

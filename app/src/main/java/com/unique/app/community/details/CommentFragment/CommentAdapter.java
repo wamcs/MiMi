@@ -28,12 +28,6 @@ public class CommentAdapter extends BaseAdapter<EventComment> {
     @Override
     public BaseViewHolder<EventComment> onCreateViewHolder(ViewGroup parent, int viewType) {
         detailCommentVewHolder = new CommentVewHolder(parent, fragment);
-        detailCommentVewHolder.setOnReplyListener(new CommentVewHolder.OnReplyListener() {
-            @Override
-            public void onReply(int who) {
-                ((DetailActivity)fragment.getActivity()).reply(who);
-            }
-        });
         return  detailCommentVewHolder;
     }
 

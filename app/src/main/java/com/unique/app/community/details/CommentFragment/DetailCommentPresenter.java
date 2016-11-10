@@ -44,6 +44,7 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
     }
 
     private void getEventComment(){
+        /*
         HttpApi.getRelativeEventComment(event.getComments())
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
@@ -54,6 +55,16 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
                 }, throwable -> {
                     Timber.d("get event comment error:%s"+throwable.toString());
                 });
+                */
+        eventComments = new ArrayList<>();
+        User user = new User();
+        EventComment comment = new EventComment();
+        user.setNickname("二狗子");
+        comment.setSender(user);
+        comment.setReceiver(user);
+        comment.setContent("快来写代码");
+        eventComments.add(comment);
+
     }
 
     @Override
@@ -65,13 +76,19 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
             public Observable<EventComment> call(List<EventComment> eventComments) {
                 return Observable.from(eventComments);
             }
-        }).filter(new Func1<EventComment, Boolean>() {
+        })/*
+    .filter(new Func1<EventComment, Boolean>() {
             @Override
             public Boolean call(EventComment eventComment) {
                 return start<=eventComments.indexOf(eventComment)&&eventComments.indexOf(eventComment)<=end;
             }
-        }).toList();
+        })
+
+    */.toList();
+
     }
+
+
 
     @Override
     public CommentAdapter getAdapter() {
@@ -101,8 +118,18 @@ public class DetailCommentPresenter extends BaseListPresenter<DetailCommentFragm
         ToastUtil.TextToast("Comment " + comment);
     }
 
+    public void replyToWho(int who){
+        String name = getAdapter().getData().get(who).getSender().getNickname();
+        ToastUtil.TextToast("I reply to " + who + " " + name);
+        // TODO: 16/11/5
+    }
+
     public boolean isUserInParticipant(User user){
         //TODO:还没想好怎么写
         return false;
+    }
+
+    public void refreshNum(){
+        ((DetailCommentFragment) mFragment).setCommentText(eventComments.size());
     }
 }

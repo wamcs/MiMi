@@ -1,5 +1,6 @@
 package com.unique.app.community.details;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,11 +13,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
@@ -35,6 +39,7 @@ import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
 import com.unique.app.community.details.CommentFragment.DetailCommentPresenter;
 import com.unique.app.community.details.Widget.KeyboardListenerLayout;
+import com.unique.app.community.details.Widget.ReplyDialog;
 import com.unique.app.community.details.Widget.ScrollViewWithListener;
 import com.unique.app.community.entity.Event;
 import com.unique.app.community.global.Conf;
@@ -45,6 +50,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.unique.app.community.global.AppData.getContext;
@@ -97,15 +103,13 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
     ImageView picImageView;
     @BindView(R.id.detail_button_wanna_join)
     Button wannaJoin;
-    @BindView(R.id.detail_layout_reply)
-    LinearLayout replyLayout;
-    @BindView(R.id.detail_edit_text_reply)
-    EditText replyEditText;
 
     private int numLeftIcons = 0;
     private int numRightIcons = 0;
 
     private boolean titleInToolbar = false;
+    private ReplyDialog replyDialog;
+
 
     @Override
     protected DetailPresenter getPresenter() {
@@ -137,6 +141,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
         }
         initialKeyboardListener();
         initialScrollView();
+        initialDialog();
         test();
     }
 
@@ -163,8 +168,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            replyEditText.setVisibility(View.GONE);
-                            replyLayout.setVisibility(View.GONE);
+                            replyDialog.dismiss();
                             wannaJoin.setVisibility(View.VISIBLE);
                             wannaJoin.requestFocus();
                         }
@@ -307,25 +311,19 @@ public class DetailActivity extends BaseActivity<DetailPresenter>
      * Reply Edit text
      */
 
+    private void initialDialog(){
+        replyDialog = new ReplyDialog(this);
+    }
+
     public void reply(int who){
-        replyEditText.setText("");
-        replyEditText.setVisibility(View.VISIBLE);
-        replyLayout.setVisibility(View.VISIBLE);
-        replyEditText.requestFocus();
-        InputMethodManager inputManager =
-                (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.showSoftInput(replyEditText, InputMethod.SHOW_FORCED);
-        replyEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_SEND
-                        || (keyEvent != null && keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                    mPresenter.replyToWho(who);
-                    return true;
-                }
-                return false;
-            }
-        });
+        replyDialog.show();
+        replyDialog.reply(who);
+
+        Window dialogWindow = replyDialog.getWindow();
+        WindowManager.LayoutParams params = dialogWindow.getAttributes();
+        dialogWindow.setGravity(Gravity.BOTTOM);
+        params.width = getResources().getDisplayMetrics().widthPixels;
+        dialogWindow.setAttributes(params);
     }
 
     /**

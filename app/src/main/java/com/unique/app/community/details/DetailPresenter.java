@@ -61,18 +61,12 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
 
     public void getData(Event event){
         this.event = event;
-        initialAllText();
+        //initialAllText();
     }
 
     public void iWannaJoin(){
         ToastUtil.TextToast("I wanna join!");
         // TODO: 16/10/23
-    }
-    
-    public void replyToWho(int who){
-        String name = getCommentPresenter().getAdapter().getData().get(who).getSender().getNickname();
-        ToastUtil.TextToast("I reply to " + who + " " + name);
-        // TODO: 16/11/5  
     }
 
     private void initialAllText(){

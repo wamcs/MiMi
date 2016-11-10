@@ -1,6 +1,10 @@
 package com.unique.app.community.details.CommentFragment;
 
 import android.graphics.BitmapFactory;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseFragment;
 import com.unique.app.community.base.recyclerView.BaseViewHolder;
+import com.unique.app.community.details.DetailActivity;
 import com.unique.app.community.entity.EventComment;
 import com.unique.app.community.utils.TimeUtils;
 import com.unique.app.community.utils.ToastUtil;
@@ -38,7 +43,6 @@ public class CommentVewHolder extends BaseViewHolder<EventComment> {
     @BindView(R.id.detail_fra_text_view_text_comment)
     TextView mContentText;
 
-    private OnReplyListener replyListener;
     private DetailCommentFragment fragment;
 
 
@@ -50,17 +54,17 @@ public class CommentVewHolder extends BaseViewHolder<EventComment> {
 
     @Override
     public void bindData(EventComment data) {
-        Glide.with(fragment).load(data.getSender().getAvatat().getUrl())
-                .error(R.mipmap.default_avatar).into(mIconComment);
+        //Glide.with(fragment).load(data.getSender().getAvatat().getUrl())
+        //        .error(R.mipmap.default_avatar).into(mIconComment);
         mNameText.setText(data.getSender().getNickname());
         mStatusText.setVisibility(View.VISIBLE);
-        mTimeText.setText(TimeUtils.parseDate(data.getCreatedAt()));
-        mContentText.setText(data.getContent());
+        //mTimeText.setText(TimeUtils.parseDate(data.getCreatedAt()));
+        mContentText.setText(makeText(data));
     }
 
     @OnClick(R.id.detail_fra_text_view_reply_comment)
     void reply(){
-        replyListener.onReply(getAdapterPosition());
+        ((DetailActivity)fragment.getActivity()).reply(getAdapterPosition());
     }
 
     @OnClick(R.id.detail_fra_icon_comment)
@@ -68,12 +72,14 @@ public class CommentVewHolder extends BaseViewHolder<EventComment> {
         //TODO:do some things
     }
 
-    public interface OnReplyListener {
-        void onReply(int who);
+    private SpannableString makeText(EventComment data){
+        if(data.getRecevier() != null) {
+            String name = data.getRecevier().getNickname();
+            SpannableString ss = new SpannableString("回复@" + name + "：" + data.getContent());
+            ss.setSpan(new ForegroundColorSpan(fragment.getResources().getColor(R.color.basic_orange)), 2, 3 + name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return ss;
+        }else{
+            return new SpannableString(data.getContent());
+        }
     }
-
-    public void setOnReplyListener(OnReplyListener replyListener) {
-        this.replyListener = replyListener;
-    }
-
 }
