@@ -14,11 +14,11 @@
     <dimen name="default_toolbar_textview_menu_text_size">18sp</dimen>
 
     <!--Default toolbar height-->
-    <dimen name="default_toolbar_height">75dp</dimen>
+    <dimen name="default_toolbar_height">55dp</dimen>
 
 
     <!--MainActivity dimens-->
-    <dimen name="main_activity_tab_layout_height">65dp</dimen>
+    <dimen name="main_activity_tab_layout_height">48dp</dimen>
 
     <!--Login and register page dimens-->
     <dimen name="button_login_register_width">280dp</dimen>
@@ -36,6 +36,19 @@
 
     <!--displayFragment dimens-->
     <dimen name="display_indicator_line_height">2dp</dimen>
+    <dimen name="display_event_item_height">265dp</dimen>
+    <dimen name="display_event_item_margin">15dp</dimen>
+    <dimen name="display_event_item_corner">20dp</dimen>
+    <dimen name="display_event_item_image_height">185dp</dimen>
+    <dimen name="display_event_item_tag_margin">15dp</dimen>
+    <dimen name="display_event_item_tag_interval">10dp</dimen>
+    <dimen name="display_event_item_text_margin">15dp</dimen>
+    <dimen name="display_event_item_icon_margin_left">10dp</dimen>
+    <dimen name="display_event_item_sponsor_image_size">40dp</dimen>
+    <dimen name="display_event_item_title_text_size">17sp</dimen>
+    <dimen name="display_event_item_info_text_size">13sp</dimen>
+    <dimen name="display_event_item_label_text_size">12sp</dimen>
+
     
     <!--Detail activity dimens-->
     <dimen name="detail_viewflipper_height">200dp</dimen>
@@ -50,6 +63,7 @@
     <dimen name="detail_padding_horizon_tag">10dp</dimen>
     <dimen name="detail_padding_vertical_tag">5dp</dimen>
     <dimen name="detail_button_height">48dp</dimen>
+    <dimen name="detail_margin_bottom">70dp</dimen>
     <dimen name="detail_title_text_size">18sp</dimen>
     <dimen name="detail_text_text_size">14sp</dimen>
     <dimen name="detail_tag_text_size">12sp</dimen>
@@ -73,5 +87,24 @@
     <dimen name="detail_fra_margin_ten">5dp</dimen>
     <dimen name="detail_fra_join_text_size">10sp</dimen>
     <dimen name="detail_fra_small_icon_diameter">15dp</dimen>
+
+    <!--DatePickDialog dimens-->
+    <dimen name="date_pick_dialog_margin">15dp</dimen>
+    <dimen name="data_pick_dialog_show_bar_height">70dp</dimen>
+    <dimen name="data_pick_dialog_title_text_size">14sp</dimen>
+    <dimen name="data_pick_dialog_show_text_size">16sp</dimen>
+    <dimen name="data_pick_dialog_normal_size">14sp</dimen>
+    <dimen name="data_pick_dialog_select_size">16sp</dimen>
+    
+    <!--ImageChooseDialog dimens-->
+    <dimen name="image_choose_dialog_margin">40dp</dimen>
+    <dimen name="image_choose_dialog_text_margin_top">15dp</dimen>
+    <dimen name="image_choose_dialog_icon_text_size">14sp</dimen>
+
+    <!--PostEvent dimens-->
+    <dimen name="post_event_bottom_button">50dp</dimen>
+
+    <!--myEventList dimens-->
+    <dimen name="launch_activity_item_height">230dp</dimen>
 
 </resources>

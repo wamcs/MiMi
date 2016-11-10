@@ -29,9 +29,12 @@
     <string name="error_user_code">验证码错误</string>
     <string name="error_user_phone">手机号格式错误</string>
     <string name="error_user_password">密码格式错误</string>
-    
+
+    <!--Display page -->
     <string name="display_show_events">花园</string>
     <string name="display_classification">分类</string>
+    <string name="loading_more">加载更多......</string>
+
 
     <!--Detail page-->
     <string name="has_applied">已申请</string>
@@ -42,6 +45,7 @@
     <string name="required_num_people">人数要求</string>
     <string name="cost_data">费用说明</string>
     <string name="for_free">免费</string>
+    <string name="cost_a_lot">付费</string>
     <string name="starter">发起者</string>
     <string name="ratio_of_like">好评度</string>
     <string name="wanna_join">我要加入</string>
@@ -51,4 +55,32 @@
     <string name="reply">回复</string>
     <string name="wanna_comment_sth">说点什么？</string>
     <string name="wanna_ask_sth">向发起者提问？</string>
+
+    <!--DatePickDialog Strings-->
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+
+    <!--ImageChooseDialog Strings-->
+    <string name="gallery">系统图库</string>
+    <string name="take_photo">拍照</string>
+    <string name="phone_album">手机相册</string>
+
+    <!--postEventActivity Strings-->
+    <string name="post">发布</string>
+
+    <!--userCenter Strings-->
+    <string name="user_center">个人中心</string>
+    
+    <!--myEventList Strings-->
+    <string name="launch_activity">发起的活动</string>
+    <string name="modify_activity">修改活动</string>
+    <string name="inspect_user">查看报名用户</string>
+    <string name="activity_finish">活动已结束</string>
+    <string name="grade">评分</string>
+
+
+
 </resources>

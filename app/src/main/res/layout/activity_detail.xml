@@ -28,31 +28,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@id/detail_pic_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_viewflipper_height"
-                android:background="@color/basic_junior_text_black">
-
-                <ViewFlipper
-                    android:id="@id/detail_view_flipper"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TextView
-                    style="@style/tagTextViewFlipperDetailStyle"
-                    android:id="@id/detail_text_view_flipper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:paddingTop="@dimen/detail_padding_vertical_tag"
-                    android:paddingBottom="@dimen/detail_padding_vertical_tag"
-                    android:paddingStart="@dimen/detail_padding_horizon_tag"
-                    android:paddingEnd="@dimen/detail_padding_horizon_tag"
-                    android:layout_marginEnd="@dimen/detail_margin_normal_horizon"
-                    android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"/>
-
-            </RelativeLayout>
+                android:scaleType="center"
+                android:src="@drawable/pic_for_test"/>
 
             <TextView
                 style="@style/titleTextViewDetailStyle"
@@ -328,7 +309,7 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/detail_icon_starter_diameter"
                     android:layout_alignParentEnd="true"
@@ -350,7 +331,7 @@
                         android:layout_toEndOf="@id/detail_text_view_ratio_title"
                         android:layout_marginStart="@dimen/detail_margin_between_icon_text_horizon" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -359,38 +340,11 @@
                 android:layout_height="@dimen/detail_margin_twenty_vertical"
                 android:background="@color/grey_background"/>
 
-            <android.support.design.widget.TabLayout
-                android:id="@id/detail_tab_layout_widget"
+            <LinearLayout
+                android:id="@id/detail_fragment_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                custom:tabTextAppearance="@style/tabCommentTextViewAppearance"
-                custom:tabIndicatorHeight="@dimen/detail_tag_indicator_height"
-                custom:tabIndicatorColor="@color/basic_orange"
-                custom:tabTextColor="@color/grey_small_title"
-                custom:tabSelectedTextColor="@color/basic_orange"
-                custom:tabPaddingTop="@dimen/detail_margin_thirty_vertical"
-                custom:tabPaddingBottom="@dimen/detail_margin_thirty_vertical">
-
-                <android.support.design.widget.TabItem
-                    android:tag="@string/ask_question"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/ask_question"/>
-
-                <android.support.design.widget.TabItem
-                    android:id="@id/detail_tab_comment_tab"
-                    android:tag="@string/comment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/comment"/>
-
-            </android.support.design.widget.TabLayout>
-
-            <com.unique.app.community.details.Widget.ViewPagerInScrollView
-                android:id="@id/detail_view_pager_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/detail_button_height"/>
+                android:orientation="horizontal"/>
 
         </LinearLayout>
 
@@ -404,33 +358,6 @@
         android:text="@string/wanna_join"
         android:layout_alignParentBottom="true"
         android:visibility="gone"/>
-
-    <LinearLayout
-        android:id="@id/detail_layout_reply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white10"
-        android:visibility="gone">
-
-        <EditText
-            style="@style/askQuestionDetailHint"
-            android:id="@id/detail_edit_text_reply"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_ask_background_height"
-            android:background="@drawable/shape_ask_question_background"
-            android:maxLines="1"
-            android:imeOptions="actionSend"
-            android:inputType="text"
-            android:layout_marginTop="@dimen/detail_margin_thirty_vertical"
-            android:layout_marginBottom="@dimen/detail_margin_thirty_vertical"
-            android:layout_marginStart="@dimen/detail_margin_fifty_horizon"
-            android:layout_marginEnd="@dimen/detail_margin_fifty_horizon"
-            android:visibility="gone"/>
-
-    </LinearLayout>
-
-
 
 </com.unique.app.community.details.Widget.KeyboardListenerLayout>
 

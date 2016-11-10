@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:background="@mipmap/img_picker_dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/date_pick_dialog_close_button"
+            android:layout_margin="@dimen/date_pick_dialog_margin"
+            />
+
+        <TextView
+            android:id="@id/date_pick_dialog_title_text_view"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/data_pick_dialog_title_text_size"
+            android:textColor="@color/basic_text_black"/>
+
+        <ImageButton
+            android:background="@mipmap/img_picker_dialog_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/date_pick_dialog_finish_button"
+            android:layout_margin="@dimen/date_pick_dialog_margin"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/basic_purple"
+        android:layout_height="@dimen/data_pick_dialog_show_bar_height">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/date_pick_dialog_margin"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white10"
+            android:text="2016.1.1"
+            android:layout_marginLeft="@dimen/date_pick_dialog_margin"
+            android:id="@id/date_pick_dialog_show_date_text_view"
+            android:textSize="@dimen/data_pick_dialog_show_text_size"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white10"
+            android:paddingRight="@dimen/date_pick_dialog_margin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="00:00"
+            android:layout_marginRight="@dimen/date_pick_dialog_margin"
+            android:id="@id/date_pick_dialog_show_time_text_view"
+            android:textSize="@dimen/data_pick_dialog_show_text_size"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/date_pick_dialog_margin"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="8"
+        android:layout_height="wrap_content">
+
+        <cn.carbswang.android.numberpickerview.library.NumberPickerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@id/date_pick_dialog_year_picker"
+            app:npv_HintText="@string/year"
+            app:npv_ShowCount="5"
+            app:npv_ShowDivider="false"
+            app:npv_TextColorHint="@color/basic_orange"
+            app:npv_TextColorNormal="@color/basic_text_black"
+            app:npv_TextColorSelected="@color/basic_orange"
+            app:npv_TextSizeNormal="@dimen/data_pick_dialog_normal_size"
+            app:npv_TextSizeSelected="@dimen/data_pick_dialog_select_size"
+
+            />
+        <cn.carbswang.android.numberpickerview.library.NumberPickerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@id/date_pick_dialog_month_picker"
+            app:npv_MinValue="1"
+            app:npv_MaxValue="12"
+            app:npv_HintText="@string/month"
+            app:npv_ShowCount="5"
+            app:npv_ShowDivider="false"
+            app:npv_TextColorHint="@color/basic_orange"
+            app:npv_TextColorNormal="@color/basic_text_black"
+            app:npv_TextColorSelected="@color/basic_orange"
+            app:npv_TextSizeNormal="@dimen/data_pick_dialog_normal_size"
+            app:npv_TextSizeSelected="@dimen/data_pick_dialog_select_size"
+
+            />
+        <cn.carbswang.android.numberpickerview.library.NumberPickerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@id/date_pick_dialog_date_picker"
+            app:npv_MinValue="1"
+            app:npv_HintText="@string/day"
+            app:npv_ShowCount="5"
+            app:npv_ShowDivider="false"
+            app:npv_TextColorHint="@color/basic_orange"
+            app:npv_TextColorNormal="@color/basic_text_black"
+            app:npv_TextColorSelected="@color/basic_orange"
+            app:npv_TextSizeNormal="@dimen/data_pick_dialog_normal_size"
+            app:npv_TextSizeSelected="@dimen/data_pick_dialog_select_size"
+
+            />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"/>
+
+        <cn.carbswang.android.numberpickerview.library.NumberPickerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@id/date_pick_dialog_hour_picker"
+            app:npv_MinValue="0"
+            app:npv_MaxValue="23"
+            app:npv_HintText="@string/hour"
+            app:npv_ShowCount="5"
+            app:npv_ShowDivider="false"
+            app:npv_TextColorHint="@color/basic_orange"
+            app:npv_TextColorNormal="@color/basic_text_black"
+            app:npv_TextColorSelected="@color/basic_orange"
+            app:npv_TextSizeNormal="@dimen/data_pick_dialog_normal_size"
+            app:npv_TextSizeSelected="@dimen/data_pick_dialog_select_size"
+
+            />
+        <cn.carbswang.android.numberpickerview.library.NumberPickerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@id/date_pick_dialog_min_picker"
+            app:npv_MinValue="0"
+            app:npv_MaxValue="59"
+            app:npv_HintText="@string/minute"
+            app:npv_ShowCount="5"
+            app:npv_ShowDivider="false"
+            app:npv_TextColorHint="@color/basic_orange"
+            app:npv_TextColorNormal="@color/basic_text_black"
+            app:npv_TextColorSelected="@color/basic_orange"
+            app:npv_TextSizeNormal="@dimen/data_pick_dialog_normal_size"
+            app:npv_TextSizeSelected="@dimen/data_pick_dialog_select_size"
+
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

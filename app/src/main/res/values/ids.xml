@@ -44,12 +44,24 @@
     <!--displayFragment ids-->
     <item name="display_tab_layout" type="id"/>
     <item name="display_viewpager" type="id"/>
+    <item name="display_item_image" type="id"/>
+    <item name="display_item_tags_container" type="id"/>
+    <item name="display_item_title_text" type="id"/>
+    <item name="display_item_activity_time_text" type="id"/>
+    <item name="display_item_release_time_text" type="id"/>
+    <item name="display_item_position_text" type="id"/>
+    <item name="display_item_person_text" type="id"/>
+    <item name="display_item_sponsor_image" type="id"/>
+    <item name="display_item_event_tag" type="id"/>
+    <item name="display_item_event_refresh_layout" type="id"/>
+    <item name="display_item_event_recycler_view" type="id"/>
+    <item name="display_item_root" type="id"/>
+    
 
     <!--details activity-->
     <item name="detail_layout" type="id"/>
     <item name="detail_scroll_layout" type="id"/>
-    <item name="detail_view_flipper" type="id"/>
-    <item name="detail_text_view_flipper" type="id"/>
+    <item name="detail_pic_image_view" type="id"/>
     <item name="detail_title_text_view" type="id"/>
     <item name="detail_text_text_view" type="id"/>
     <item name="detail_layout_applied" type="id"/>
@@ -68,13 +80,11 @@
     <item name="detail_button_wanna_join" type="id"/>
     <item name="detail_layout_left_icons" type="id"/>
     <item name="detail_layout_right_icons" type="id"/>
+    <item name="detail_comment_text_view" type="id"/>
     <item name="detail_ask_comment_edit_text" type="id"/>
-    <item name="detail_tab_layout_widget" type="id"/>
-    <item name="detail_tab_comment_tab" type="id"/>
-    <item name="detail_tab_ask_tab" type="id"/>
     <item name="detail_recycler_view" type="id"/>
-    <item name="detail_view_pager_fragment" type="id"/>
     <item name="detail_text_view_read_more" type="id"/>
+    <item name="detail_fragment_layout" type="id"/>
     <item name="detail_fra_icon_comment" type="id"/>
     <item name="detail_fra_layout_comment" type="id"/>
     <item name="detail_fra_text_view_name_comment" type="id"/>
@@ -82,15 +92,37 @@
     <item name="detail_fra_text_view_time_comment" type="id"/>
     <item name="detail_fra_text_view_text_comment" type="id"/>
     <item name="detail_fra_text_view_reply_comment" type="id"/>
-    <item name="detail_fra_icon_ask" type="id"/>
-    <item name="detail_fra_layout_ask_one" type="id"/>
-    <item name="detail_fra_layout_ask_two" type="id"/>
-    <item name="detail_fra_text_view_name_ask" type="id"/>
-    <item name="detail_fra_text_view_time_ask" type="id"/>
-    <item name="detail_fra_text_view_question_ask" type="id"/>
-    <item name="detail_fra_text_view_answer_ask" type="id"/>
-    <item name="detail_fra_image_light_ask" type="id"/>
-    <item name="detail_text_view_see_more" type="id"/>
     <item name="detail_layout_reply" type="id"/>
     <item name="detail_edit_text_reply" type="id"/>
+
+    <!--datePickDialog ids-->
+    <item name="date_pick_dialog_close_button" type="id"/>
+    <item name="date_pick_dialog_finish_button" type="id"/>
+    <item name="date_pick_dialog_title_text_view" type="id"/>
+    <item name="date_pick_dialog_show_date_text_view" type="id"/>
+    <item name="date_pick_dialog_show_time_text_view" type="id"/>
+    <item name="date_pick_dialog_year_picker" type="id"/>
+    <item name="date_pick_dialog_month_picker" type="id"/>
+    <item name="date_pick_dialog_date_picker" type="id"/>
+    <item name="date_pick_dialog_hour_picker" type="id"/>
+    <item name="date_pick_dialog_min_picker" type="id"/>
+
+    <!--imageChooseDialog ids-->
+    <item name="image_choose_dialog_system_gallery" type="id"/>
+    <item name="image_choose_dialog_take_phone" type="id"/>
+    <item name="image_choose_dialog_phone_album" type="id"/>
+    <item name="image_choose_dialog_canal" type="id"/>
+    <item name="image_choose_dialog_phone_album_gridview" type="id"/>
+    <item name="image_choose_dialog_phone_album_gridview_item" type="id"/>
+
+    <!--postEvent ids-->
+    <item name="post_event_activity_bottom_button" type="id"/>
+
+    <!--myEventList ids-->
+    <item name="publish_activity_refresh_layout" type="id"/>
+    <item name="publish_activity_recyclerview" type="id"/>
+    <item name="publish_activity_unfinish_item_modify_button" type="id"/>
+    <item name="publish_activity_unfinish_item_user_list_button" type="id"/>
+    <item name="publish_activity_finished_item_grade" type="id"/>
+
 </resources>

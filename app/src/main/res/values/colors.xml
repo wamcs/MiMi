@@ -51,6 +51,7 @@
     <color name="basic_orange">#ff8e5d</color>
     <color name="basic_text_black">#282828</color>
     <color name="basic_junior_text_black">#666666</color>
+    <color name="basic_purple">#ab87ed</color>
 
     <!---colors in login or register pages-->
 

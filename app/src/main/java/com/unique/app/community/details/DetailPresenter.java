@@ -1,18 +1,32 @@
 package com.unique.app.community.details;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVRelation;
+import com.unique.app.community.entity.User;
+import com.unique.app.community.net.HttpApi;
+import com.unique.app.community.net.Response;
+import com.unique.app.community.utils.TimeUtils;
+
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IPresenter;
-import com.unique.app.community.details.AskFragment.DetailAskFragment;
-import com.unique.app.community.details.AskFragment.DetailAskPresenter;
 import com.unique.app.community.details.CommentFragment.DetailCommentFragment;
 import com.unique.app.community.details.CommentFragment.DetailCommentPresenter;
+import com.unique.app.community.entity.Event;
 import com.unique.app.community.utils.ToastUtil;
+
+import java.sql.Time;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Author: Alexander
@@ -23,47 +37,53 @@ import com.unique.app.community.utils.ToastUtil;
 public class DetailPresenter extends BasePresenter<DetailActivity>
         implements IPresenter<DetailActivity> {
 
-    private FragmentManager fragmentManager;
-    private DetailAskFragment askFragment;
-    private DetailCommentFragment commentFragment;
+    private Event event;
+    private List<User> applied;
+    private List<User> joined;
 
-    private DetailAskPresenter askPresenter;
+    private FragmentManager fragmentManager;
+    private DetailCommentFragment commentFragment;
     private DetailCommentPresenter commentPresenter;
 
     public DetailPresenter(AppCompatActivity activity) {
         super(activity);
-        initialFrags();
+        initialFrag();
     }
 
-    public void initialFrags(){
-        fragmentManager = mActivity.getSupportFragmentManager();
-        askFragment = new DetailAskFragment();
+    private void initialFrag(){
         commentFragment = new DetailCommentFragment();
-        askPresenter = new DetailAskPresenter(askFragment, askFragment);
-        commentPresenter = new DetailCommentPresenter(commentFragment, commentFragment);
+        commentPresenter = new DetailCommentPresenter(commentFragment, commentFragment, event);
+        fragmentManager = mActivity.getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.detail_fragment_layout, commentFragment)
+                .commit();
+    }
+
+    public void getData(Event event){
+        this.event = event;
+        //initialAllText();
     }
 
     public void iWannaJoin(){
         ToastUtil.TextToast("I wanna join!");
         // TODO: 16/10/23
     }
-    
-    public void replyToWho(int who){
-        String name = getCommentPresenter().getAdapter().getData().get(who).getSender().getNickname();
-        ToastUtil.TextToast("I reply to " + who + " " + name);
-        // TODO: 16/11/5  
-    }
 
-    public void setMainTitle(String title){
-        ((DetailActivity)mView).setMainTitle(title);
-    }
-
-    public void setMainText(String text){
-        ((DetailActivity)mView).setMainText(text);
-    }
-
-    public void setStartTime(String time){
-        ((DetailActivity)mView).setStartTime(time);
+    private void initialAllText(){
+        initialAVRelation();
+        ((DetailActivity)mView).addPic(event.getImage());
+        ((DetailActivity)mView).setMainTitle(event.getSubject());
+        ((DetailActivity)mView).setMainText(event.getContent());
+        ((DetailActivity)mView).setStartTime(TimeUtils.parseDate(event.getStartTime()));
+        ((DetailActivity)mView).setUtilTime(TimeUtils.parseDate(event.getEndTime()));
+        ((DetailActivity)mView).setActivityPlace(event.getPlace());
+        ((DetailActivity)mView).setRequirement(event.getExcepted());
+        ((DetailActivity)mView).setCost(event.getType());
+        ((DetailActivity)mView).setStarterIcon(event.getSponsor().getAvatat().getUrl());
+        ((DetailActivity)mView).setNameOfStarter(event.getSponsor().getNickname());
+        ((DetailActivity)mView).setRatioOfLike(event.getGrade());
+        setAppliedIcons();
+        setJoinedIcons();
     }
 
     public void setUtilTime(String time){
@@ -78,44 +98,48 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
         ((DetailActivity)mView).setRequirement(num);
     }
 
-    public void setCost(Float cost){
-        ((DetailActivity)mView).setCost(cost);
+    public void setCost(int i){
+        ((DetailActivity)mView).setCost(i);
     }
 
     public void setNameOfStarter(String name){
         ((DetailActivity)mView).setNameOfStarter(name);
     }
 
-    public void setRatioOfLike(int ratio){
+    public void setRatioOfLike(String ratio){
         ((DetailActivity)mView).setRatioOfLike(ratio);
     }
 
-    public void addPicToFlipper(Bitmap picture){
-        ((DetailActivity)mView).addPicToFlipper(picture);
+    public void addPicToFlipper(String picture){
+        ((DetailActivity)mView).addPic(picture);
     }
 
-    public void setStarterIcon(Bitmap icon){
+    public void setStarterIcon(String icon){
         ((DetailActivity)mView).setStarterIcon(icon);
     }
 
-    public void addPicToAppliedIcons(Bitmap icon){
+    private void setAppliedIcons(){
+        for(User user : applied){
+            ((DetailActivity)mView).addPicToAppliedIcons(user.getAvatat().getUrl());
+        }
+    }
+
+    private void setJoinedIcons(){
+        for(User user : joined){
+            ((DetailActivity)mView).addPicToJoinedIcons(user.getAvatat().getUrl());
+        }
+    }
+
+    public void addPicToAppliedIcons(String icon){
         ((DetailActivity)mView).addPicToAppliedIcons(icon);
     }
 
-    public void addPicToJoinedIcons(Bitmap icon){
+    public void addPicToJoinedIcons(String icon){
         ((DetailActivity)mView).addPicToJoinedIcons(icon);
     }
 
     public DetailCommentPresenter getCommentPresenter(){
         return commentPresenter;
-    }
-
-    public DetailAskPresenter getAskPresenter(){
-        return askPresenter;
-    }
-
-    public DetailAskFragment getAskFragment(){
-        return askFragment;
     }
 
     public DetailCommentFragment getCommentFragment(){
@@ -125,4 +149,30 @@ public class DetailPresenter extends BasePresenter<DetailActivity>
     public FragmentManager getFragmentManager(){
         return fragmentManager;
     }
+
+    private void initialAVRelation(){
+        HttpApi.getRelativeUser(event.getWaitingUser())
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(listResponse -> {
+                    if (listResponse.getCode() == Response.SUCCESS) {
+                        applied = listResponse.getData();
+                    }
+                }, throwable -> {
+                    Timber.d("get waiting user error:%s"+throwable.toString());
+                });
+        HttpApi.getRelativeUser(event.getParticipation())
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribe(listResponse -> {
+                    if (listResponse.getCode() == Response.SUCCESS) {
+                        joined = listResponse.getData();
+                    }
+                }, throwable -> {
+                    Timber.d("get participation error:%s"+throwable.toString());
+                });
+        ((DetailActivity)mView).setHasAppliedNum(applied.size());
+        ((DetailActivity)mView).setHasJoinNum(joined.size());
+    }
+
 }

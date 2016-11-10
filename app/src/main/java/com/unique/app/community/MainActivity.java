@@ -63,15 +63,21 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IView {
         if (mCurrentIndex == index) {
             return;
         }
+        selectTab(index == 0,page1,R.mipmap.img_display_selected,R.mipmap.img_display_unselected);
+        selectTab(index == 1,page2,R.mipmap.img_message_selected,R.mipmap.img_message_unselected);
+        selectTab(index == 2,page3,R.mipmap.img_user_selected,R.mipmap.img_user_unselected);
         //TODO:add image change
         mCurrentIndex = index;
         switch (mCurrentIndex){
             case 0:
                 mToolBarTitleTextView.setText(R.string.app_name);
+                mToolBarRightImageview.setImageResource(R.mipmap.img_post);
                 break;
             case 1:
                 break;
             case 2:
+                mToolBarTitleTextView.setText(R.string.user_center);
+                mToolBarRightImageview.setImageResource(R.mipmap.img_edit);
                 break;
 
         }
@@ -114,7 +120,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IView {
     void invoke(){
         switch (mCurrentIndex){
             case 0:
-
+                //TODO:postEvent
                 break;
             case 1:
                 break;

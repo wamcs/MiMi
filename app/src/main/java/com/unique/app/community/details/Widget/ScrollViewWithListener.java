@@ -2,6 +2,7 @@ package com.unique.app.community.details.Widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 /**
@@ -32,6 +33,11 @@ public class ScrollViewWithListener extends ScrollView {
         if(scrollListener != null){
             scrollListener.onScroll(y, oldY);
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 
     public void setScrollListener(OnScrollListener scrollListener){

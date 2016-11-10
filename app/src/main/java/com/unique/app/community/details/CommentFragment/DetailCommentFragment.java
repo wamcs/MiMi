@@ -15,7 +15,10 @@ import com.unique.app.community.base.Mvp.IView;
 import com.unique.app.community.details.DetailActivity;
 import com.unique.app.community.details.Widget.KeyboardListenerLayout;
 
+import java.util.Locale;
+
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Author: Alexander
@@ -26,6 +29,8 @@ import butterknife.BindView;
 public class DetailCommentFragment extends BaseListFragment<DetailCommentPresenter>
         implements IView {
 
+    @BindView(R.id.detail_comment_text_view)
+    TextView commentText;
     @BindView(R.id.detail_ask_comment_edit_text)
     EditText commentEditText;
     @BindView(R.id.detail_recycler_view)
@@ -66,13 +71,7 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
             }
         });
         recyclerView.setAdapter(mPresenter.getAdapter());
-
-        readMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPresenter.refreshBottom();
-            }
-        });
+        mPresenter.refreshNum();
     }
 
     @Override
@@ -83,6 +82,10 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
     public void comment(){
         mPresenter.comment(commentEditText.getText().toString());
         commentEditText.setText("");
+    }
+
+    public void setCommentText(int numberOfComment){
+        commentText.setText(String.format(Locale.CHINA, getResources().getString(R.string.comment) + " %d", numberOfComment));
     }
 
     private void setEnterToSend(){
@@ -97,5 +100,11 @@ public class DetailCommentFragment extends BaseListFragment<DetailCommentPresent
                 return false;
             }
         });
+    }
+
+    @OnClick(R.id.detail_text_view_read_more)
+    void readMore(){
+        mPresenter.refreshBottom();
+        mPresenter.refreshNum();
     }
 }

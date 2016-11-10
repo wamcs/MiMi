@@ -1,13 +1,7 @@
 package com.unique.app.community.loginAndRegister.forgetPassword;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -19,12 +13,8 @@ import android.widget.TextView;
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BaseActivity;
 import com.unique.app.community.base.Mvp.IView;
-import com.unique.app.community.global.conf;
-import com.unique.app.community.loginAndRegister.login.LoginActivity;
 import com.unique.app.community.loginAndRegister.utils.Listeners;
 import com.unique.app.community.utils.PhoneChecker;
-
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;

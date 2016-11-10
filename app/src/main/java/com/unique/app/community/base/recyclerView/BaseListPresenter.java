@@ -3,13 +3,16 @@ package com.unique.app.community.base.recyclerView;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.unique.app.community.R;
 import com.unique.app.community.base.Mvp.BasePresenter;
 import com.unique.app.community.base.Mvp.IView;
+import com.unique.app.community.net.Response;
 import com.unique.app.community.utils.NetworkUtil;
 import com.unique.app.community.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -30,6 +33,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
     private static final int INIT_PAGE = 1;
     private boolean isRefreshing = false;
 
+    protected static final int ITEM_NUMBER = 10;
     private RefreshListener listener;
 
     public BaseListPresenter(AppCompatActivity activity, RefreshListener listener) {
@@ -100,7 +104,7 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
         return isRefreshing;
     }
 
-    private void changeRefreshState(boolean refreshing) {
+    protected void changeRefreshState(boolean refreshing) {
         this.isRefreshing = refreshing;
         onRefreshStateChanged(refreshing);
     }
@@ -109,13 +113,13 @@ public abstract class BaseListPresenter<T extends IView,D> extends BasePresenter
      * View will implement RefreshListener and it will call this call-back method to perfect logic
      * @param isRefreshing
      */
-    private void onRefreshStateChanged(boolean isRefreshing) {
+    protected void onRefreshStateChanged(boolean isRefreshing) {
         if (listener != null) {
             listener.onRefreshStateChanged(isRefreshing);
         }
     }
 
-    private void onError(Throwable t) {
+    protected void onError(Throwable t) {
         if (!NetworkUtil.checkIsNetworkConnected()) {
             ToastUtil.TextToast(R.string.no_network);
             return;

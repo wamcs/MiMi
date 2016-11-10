@@ -10,7 +10,6 @@ import com.avos.avoscloud.UpdatePasswordCallback;
 import com.unique.app.community.entity.User;
 
 import rx.Observable;
-import rx.schedulers.Schedulers;
 
 /**
  * Author: Wamcs
@@ -60,7 +59,7 @@ public class UserApi {
             User.logInInBackground(username, password, new LogInCallback<AVUser>() {
                 @Override
                 public void done(AVUser avUser, AVException e) {
-                    //想不出这个avUser能干啥
+                    User.changeCurrentUser(avUser,true);
                     Response<Void> response = new Response<Void>();
                     if (e != null){
                         response.setCode(e.getCode());

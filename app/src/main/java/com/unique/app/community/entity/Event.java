@@ -20,10 +20,12 @@ import java.util.List;
 public class Event extends AVObject {
 
     // 活动状态
-    // 1-有效 0-无效
+    // 0-报名 1-开始 2-结束
     private static final String STATE = "state";
-    public static final int invalid = 0;
-    public static final int valid = 1;
+    public static final int signup = 0;
+    public static final int begining = 1;
+    public static final int end = 2;
+
     // 活动所需人数
     private static final String EXCEPTED = "excepted";
     //地点
@@ -32,8 +34,10 @@ public class Event extends AVObject {
     private static final String CONTENT = "content";
     //评论
     private static final String COMMENTS = "comments";
-    //时间
-    private static final String TIME = "time";
+    //开始时间
+    private static final String START_TIME = "start_time";
+    //结束
+    private static final String END_TIME = "end_time";
     // 种类 0-普通 1-付费
     private static final String TYPE = "type";
     public static final int NORMAL = 0;
@@ -48,21 +52,70 @@ public class Event extends AVObject {
     private static final String SUBJECT = "subject";
     //发起人
     private static final String SPONSOR = "sponsor";
+    //参与人数
+    private static final String PARTICIPANTS_COUNT = "ParticipantsCount";
+    //活动评分
+    private static final String GRADE = "grade";
+    //等待审核用户
+    private static final String WAITING_USER = "waiting";
 
-    public List<AVFile> getImage(){
-        return getList(IMAGE);
+    public  String getGrade() {
+        return getString(GRADE);
     }
 
-    public void setImage(List<AVFile> images){
-        put(IMAGE,images);
+    public void setGrade(String grade){
+        put(GRADE,grade);
+    }
+
+    public AVRelation<User> getWaitingUser(){
+        return getRelation(WAITING_USER);
+    }
+
+    public void setWaitingUser(User user){
+        AVRelation<User> avRelation = getParticipation();
+        avRelation.add(user);
+        put(WAITING_USER,avRelation);
+    }
+
+    public void setWaitingUsers(List<User> users){
+        AVRelation<User> avRelation = getParticipation();
+        avRelation.addAll(users);
+        put(WAITING_USER,avRelation);
+    }
+
+    public int getCount() {
+        return getInt(PARTICIPANTS_COUNT);
+    }
+
+    public void addCount(){
+        put(PARTICIPANTS_COUNT,getCount()+1);
+    }
+
+    public void reduceCount(){
+        if (getCount() == 0){
+            return;
+        }
+        put(PARTICIPANTS_COUNT,getCount()-1);
+    }
+
+    public String getImage(){
+        AVFile img = getAVFile(IMAGE);
+        return img.getUrl();
+    }
+
+    public void setImage(AVFile image){
+        put(IMAGE,image);
     }
 
     public AVRelation<EventComment> getComments(){
         return getRelation(COMMENTS);
     }
 
-    public void setComments(AVRelation<EventComment> comments){
-        put(COMMENTS,comments);
+    public void setComments(EventComment comment){
+        AVRelation<EventComment> avRelation = getComments();
+        avRelation.add(comment);
+        put(COMMENTS,avRelation);
+
     }
 
     public String getContent(){
@@ -73,12 +126,20 @@ public class Event extends AVObject {
         put(CONTENT,content);
     }
 
-    public Date getTime(){
-        return getDate(TIME);
+    public Date getStartTime(){
+        return getDate(START_TIME);
     }
 
-    public void setTime(Date date){
-        put(TIME,date);
+    public void setStartTime(Date date){
+        put(START_TIME,date);
+    }
+
+    public Date getEndTime(){
+        return getDate(END_TIME);
+    }
+
+    public void setEndTime(Date date){
+        put(END_TIME,date);
     }
 
     public String getPlace(){
@@ -117,16 +178,20 @@ public class Event extends AVObject {
         return getRelation(PARTICIPATION);
     }
 
-    public void setParticipation(AVRelation<User> participation){
-        put(PARTICIPATION,participation);
+    public void setParticipation(User user){
+        AVRelation<User> avRelation = getParticipation();
+        avRelation.add(user);
+        put(PARTICIPATION,avRelation);
     }
 
     public AVRelation<EventTag> getTags(){
         return getRelation(TAG);
     }
 
-    public void setTags(AVRelation<EventTag> tags){
-        put(TAG,tags);
+    public void setTags(List<EventTag> tagList){
+        AVRelation<EventTag> avRelation = getTags();
+        avRelation.addAll(tagList);
+        put(TAG,avRelation);
     }
 
     public String getSubject(){
